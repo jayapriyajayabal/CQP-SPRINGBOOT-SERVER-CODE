@@ -1,4 +1,4 @@
-package net.guides.springboot2.crud.exception;
+package cqp.springboot.server.exception;
 
 import java.util.Date;
 

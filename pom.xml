@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>net.guides.springboot2</groupId>
-	<artifactId>springboot2-mssql-jpa-hibernate-crud-example</artifactId>
+	<groupId>cqp.springboot.server</groupId>
+	<artifactId>cqp-server-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springboot2-mssql-jpa-hibernate-crud-example</name>
-	<description>springboot2-mssql-jpa-hibernate-crud-example</description>
+	<name>cqp-springboot-server</name>
+	<description>cqp-springboot-server-application</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -40,12 +40,31 @@
             <artifactId>sqljdbc4</artifactId>
             <version>4.0</version>
         </dependency>
+         
+       <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>1.3.2</version>
+</dependency>
+  
+        
+        <!-- <dependency>
+    <groupId>com.microsoft.sqlserver</groupId>
+    <artifactId>mssql-jdbc</artifactId>
+    <version>8.2.1.jre11</version>
+</dependency> -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+	
 		
 		<dependency>
     <groupId>javax.xml.bind</groupId>
@@ -58,6 +77,30 @@
     <artifactId>javassist</artifactId>
     <version>3.27.0-GA</version>
 </dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+<dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-api</artifactId>
+       <version>1.7.5</version>
+   </dependency>
+   <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-simple</artifactId>
+       <version>1.6.4</version>
+   </dependency>
+<!-- <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency> -->
 	</dependencies>
 
 	<build>

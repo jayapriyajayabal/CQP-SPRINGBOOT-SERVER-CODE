@@ -1,4 +1,4 @@
-package net.guides.springboot2.springboot2jpacrudexample;
+package cqp.springboot.server.cqpspringbootApplication;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -17,12 +17,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
-import net.guides.springboot2.crud.Application;
-import net.guides.springboot2.crud.model.Employee;
+import cqp.springboot.server.Application;
+import cqp.springboot.server.model.Alert;
+import cqp.springboot.server.model.Employee;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class EmployeeControllerIntegrationTest {
+public class AlertControllerIntegrationTest {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
@@ -43,7 +45,7 @@ public class EmployeeControllerIntegrationTest {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
-		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/employees",
+		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/alerts",
 				HttpMethod.GET, entity, String.class);
 		
 		assertNotNull(response.getBody());
@@ -51,19 +53,19 @@ public class EmployeeControllerIntegrationTest {
 
 	@Test
 	public void testGetEmployeeById() {
-		Employee employee = restTemplate.getForObject(getRootUrl() + "/employees/1", Employee.class);
+		Employee employee = restTemplate.getForObject(getRootUrl() + "/alerts/1", Employee.class);
 		System.out.println(employee.getFirstName());
 		assertNotNull(employee);
 	}
 
 	@Test
 	public void testCreateEmployee() {
-		Employee employee = new Employee();
-		employee.setEmailId("admin@gmail.com");
-		employee.setFirstName("admin");
-		employee.setLastName("admin");
+		Alert alert = new Alert();
+		alert.setSupplier("admin@gmail.com");
+		alert.setStatus("admin");
+		alert.setAlert_test("admin");
 
-		ResponseEntity<Employee> postResponse = restTemplate.postForEntity(getRootUrl() + "/employees", employee, Employee.class);
+		ResponseEntity<Employee> postResponse = restTemplate.postForEntity(getRootUrl() + "/alerts", alert, Employee.class);
 		assertNotNull(postResponse);
 		assertNotNull(postResponse.getBody());
 	}
@@ -71,26 +73,26 @@ public class EmployeeControllerIntegrationTest {
 	@Test
 	public void testUpdateEmployee() {
 		int id = 1;
-		Employee employee = restTemplate.getForObject(getRootUrl() + "/employees/" + id, Employee.class);
-		employee.setFirstName("admin1");
-		employee.setLastName("admin2");
+		Alert alert = restTemplate.getForObject(getRootUrl() + "/alerts/" + id, Alert.class);
+		alert.setSupplier("admin1");
+		alert.setStatus("admin2");
 
-		restTemplate.put(getRootUrl() + "/employees/" + id, employee);
+		restTemplate.put(getRootUrl() + "/alerts/" + id, alert);
 
-		Employee updatedEmployee = restTemplate.getForObject(getRootUrl() + "/employees/" + id, Employee.class);
-		assertNotNull(updatedEmployee);
+		Alert updatedAlert = restTemplate.getForObject(getRootUrl() + "/alerts/" + id, Alert.class);
+		assertNotNull(updatedAlert);
 	}
 
 	@Test
 	public void testDeleteEmployee() {
 		int id = 2;
-		Employee employee = restTemplate.getForObject(getRootUrl() + "/employees/" + id, Employee.class);
-		assertNotNull(employee);
+		Alert alert = restTemplate.getForObject(getRootUrl() + "/alerts/" + id, Alert.class);
+		assertNotNull(alert);
 
-		restTemplate.delete(getRootUrl() + "/employees/" + id);
+		restTemplate.delete(getRootUrl() + "/alerts/" + id);
 
 		try {
-			employee = restTemplate.getForObject(getRootUrl() + "/employees/" + id, Employee.class);
+			alert = restTemplate.getForObject(getRootUrl() + "/alerts/" + id, Alert.class);
 		} catch (final HttpClientErrorException e) {
 			assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
 		}

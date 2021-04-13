@@ -1,11 +1,12 @@
-package net.guides.springboot2.crud.controller;
+package cqp.springboot.server.controller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,16 +14,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.guides.springboot2.crud.exception.ResourceNotFoundException;
-import net.guides.springboot2.crud.model.Alert;
-import net.guides.springboot2.crud.model.Employee;
-import net.guides.springboot2.crud.repository.AlertRepository;
-import net.guides.springboot2.crud.repository.EmployeeRepository;
+import cqp.springboot.server.exception.ResourceNotFoundException;
+import cqp.springboot.server.model.Alert;
+
+import cqp.springboot.server.repository.AlertRepository;
+
 
 @RestController
 @CrossOrigin
@@ -30,10 +31,16 @@ import net.guides.springboot2.crud.repository.EmployeeRepository;
 public class AlertController {
 	@Autowired
 	private AlertRepository alertRepository;
-
+	
+	private static final Logger log = LoggerFactory.getLogger(AlertController.class);
+	
 	@GetMapping("/alerts")
 	public List<Alert> getAllAlerts() {
-		return alertRepository.findAll();
+		log.info("fetching list of alerts data...");
+		List<Alert> findAll = alertRepository.findAll();
+	    log.info("[FIND_ALL] {}", findAll);
+		return findAll;
+		
 	}
 
 	@GetMapping("/alerts/{id}")
@@ -66,7 +73,7 @@ public class AlertController {
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long alertId)
 			throws ResourceNotFoundException {
 		Alert alert = alertRepository.findById(alertId)
-				.orElseThrow(() -> new ResourceNotFoundException("Alert not found for this id :: " + alertId));
+				.orElseThrow(() -> new ResourceNotFoundException("you don't have permission to delete this alert : " + alertId));
 
 		alertRepository.delete(alert);
 		Map<String, Boolean> response = new HashMap<>();

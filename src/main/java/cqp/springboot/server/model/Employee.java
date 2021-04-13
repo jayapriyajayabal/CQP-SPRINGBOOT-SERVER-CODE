@@ -1,4 +1,4 @@
-package net.guides.springboot2.crud.model;
+package cqp.springboot.server.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

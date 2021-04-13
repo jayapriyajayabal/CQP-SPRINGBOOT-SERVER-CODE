@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE log4j:configuration SYSTEM 
+          "https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+          
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+<appender name="RollingAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="C:\\Honda\\Logs\\logfile" />
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="5" />
+        <param name="Threshold" value="debug" />
+        <param name="DatePattern" value="'.'yyyy_MM_dd'.log'"/>
+	       <layout class="org.apache.log4j.PatternLayout">
+	          <param name="ConversionPattern" value="%d{HH:mm:ss.SSS} [%t] 
+      %highlight{%level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue} - %msg%n"/>      
+	       </layout>
+	       <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="debug" />
+            <param name="LevelMax" value="info" />
+            <param name="AcceptOnMatch" value="true" />
+        </filter> 
+	       
+</appender>
+
+<!-- <logger name="net.guides.springboot2" additivity="false">
+	<level value="DEBUG" />
+	<appender-ref ref="RollingAppender" />
+	<appender-ref ref="console" />
+</logger> -->
+
+ <root>
+        <level value="DEBUG" />
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
+    
+   
+<!-- <root>
+    <priority value="DEBUG"/>
+     <appender-ref ref="console" />
+    <appender-ref ref="RollingAppender" />
+</root> -->
+     
+     
+
+
+</log4j:configuration> 

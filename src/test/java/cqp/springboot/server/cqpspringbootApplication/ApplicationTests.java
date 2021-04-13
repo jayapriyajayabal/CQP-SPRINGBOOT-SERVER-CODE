@@ -1,4 +1,4 @@
-package net.guides.springboot2.springboot2jpacrudexample;
+package cqp.springboot.server.cqpspringbootApplication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
