@@ -17,9 +17,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
-import cqp.springboot.server.Application;
-import cqp.springboot.server.model.Alert;
-import cqp.springboot.server.model.Employee;
+import com.honda.am.cqp.Application;
+import com.honda.am.cqp.model.Alert;
+import com.honda.am.cqp.model.Employee;
 
 
 @RunWith(SpringRunner.class)

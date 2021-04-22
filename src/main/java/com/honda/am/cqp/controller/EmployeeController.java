@@ -1,4 +1,4 @@
-package cqp.springboot.server.controller;
+package com.honda.am.cqp.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import cqp.springboot.server.exception.ResourceNotFoundException;
-import cqp.springboot.server.model.Employee;
-import cqp.springboot.server.repository.EmployeeRepository;
+
+import com.honda.am.cqp.exception.ResourceNotFoundException;
+import com.honda.am.cqp.model.Employee;
+import com.honda.am.cqp.repository.EmployeeRepository;
 
 @RestController
 @RequestMapping("/api/v1")

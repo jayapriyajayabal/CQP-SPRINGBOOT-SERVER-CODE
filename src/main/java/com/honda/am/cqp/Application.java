@@ -1,4 +1,4 @@
-package cqp.springboot.server;
+package com.honda.am.cqp;
 
 import org.apache.log4j.DailyRollingFileAppender;
 import org.apache.log4j.Level;

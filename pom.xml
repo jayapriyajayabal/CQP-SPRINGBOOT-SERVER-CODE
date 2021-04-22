@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>cqp.springboot.server</groupId>
+	<groupId>com.honda.am.cqp</groupId>
 	<artifactId>cqp-server-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -51,6 +51,7 @@
  <dependency>
     <groupId>com.microsoft.sqlserver</groupId>
     <artifactId>mssql-jdbc</artifactId>
+    <version>6.4.0.jre8</version><!--$NO-MVN-MAN-VER$--> 
     </dependency>
 		
 		<dependency>

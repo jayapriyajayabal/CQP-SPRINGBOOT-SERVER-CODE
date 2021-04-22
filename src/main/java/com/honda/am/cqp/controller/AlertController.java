@@ -1,4 +1,4 @@
-package cqp.springboot.server.controller;
+package com.honda.am.cqp.controller;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cqp.springboot.server.exception.ResourceNotFoundException;
-import cqp.springboot.server.model.Alert;
-import cqp.springboot.server.repository.AlertRepository;
+import com.honda.am.cqp.exception.ResourceNotFoundException;
+import com.honda.am.cqp.model.Alert;
+import com.honda.am.cqp.repository.AlertRepository;
 
 
 @RestController

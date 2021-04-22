@@ -1,4 +1,4 @@
-package cqp.springboot.server.exception;
+package com.honda.am.cqp.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

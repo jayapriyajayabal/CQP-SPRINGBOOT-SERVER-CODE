@@ -1,4 +1,4 @@
-package  cqp.springboot.server.model;
+package  com.honda.am.cqp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
