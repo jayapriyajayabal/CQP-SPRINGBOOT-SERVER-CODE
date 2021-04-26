@@ -1,4 +1,4 @@
-package com.honda.am.cqp.controller;
+package com.honda.am.cqp.util;
  
 import java.io.IOException;
 import java.util.List;
@@ -13,15 +13,15 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.honda.am.cqp.model.Alert;
+import com.honda.am.cqp.dto.UserDto;
  
-public class UserExcelExporter {
+public class UserExcelExporterUtil {
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<Alert> listAlerts;
+    private List<UserDto> listAlerts;
      
-    public UserExcelExporter(List<Alert> listUsers) {
-        this.listAlerts = listUsers;
+    public UserExcelExporterUtil(List<UserDto> userList) {
+        this.listAlerts = userList;
         workbook = new XSSFWorkbook();
     }
  
@@ -37,10 +37,11 @@ public class UserExcelExporter {
         font.setFontHeight(16);
         style.setFont(font);
          
-        createCell(row, 0, "Id", style);      
-        createCell(row, 1, "Supplier", style);       
-        createCell(row, 2, "Status", style);    
-        createCell(row, 3, "AlertType", style);
+        createCell(row, 0, "User Login", style);      
+        createCell(row, 1, "User Type", style);       
+        createCell(row, 2, "First Name", style);    
+        createCell(row, 3, "Last Name", style);
+//        createCell(row, 4, "Supplier Number", style);
          
     }
      
@@ -64,16 +65,15 @@ public class UserExcelExporter {
         XSSFFont font = workbook.createFont();
         font.setFontHeight(14);
         style.setFont(font);
-                 
-        for (Alert alert : listAlerts) {
+        for (UserDto user : listAlerts) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
              
-            createCell(row, columnCount++, alert.getId(), style);
-            createCell(row, columnCount++, alert.getSupplier(), style);
-            createCell(row, columnCount++, alert.getStatus(), style);
-            createCell(row, columnCount++, alert.getAlert_test().toString(), style);
-             
+            createCell(row, columnCount++, user.getUserLogin(), style);
+            createCell(row, columnCount++, user.getUserType(), style);
+            createCell(row, columnCount++, user.getFirstName(), style);
+            createCell(row, columnCount++, user.getLastName(), style);
+            createCell(row, columnCount++, user.getSupplierNumber(), style); 
         }
     }
      

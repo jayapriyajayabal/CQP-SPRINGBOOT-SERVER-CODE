@@ -1,20 +1,17 @@
 package com.honda.am.cqp.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,14 +33,46 @@ public class AlertController {
 	@Autowired
 	private AlertRepository alertRepository;
 	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	
 	private static final Logger log = LoggerFactory.getLogger(AlertController.class);
 	
 	@GetMapping("/alerts")
-	public List<Alert> getAllAlerts() {
-		log.info("fetching list of alerts data...");
+	public List<Map<String, Object>> getAllAlerts() {
+		
+		final String GET_CURR_VCHR_SUMMARY =
+				"SELECT "
+					+ "T1.VOUCHER_NO,"
+					+ "T1.SUPP_NO,T1.QTR_NO,T1.QTR_YEAR,T1.SUPP_NAME,T1.STATUS_ID,T1.VOUCHER_DESC,"
+					+ "T1.ISSUE_DATE,T1.DUE_DATE,T1.SUB_TOTAL_AMT,T1.TOTAL_ADDL_SHIPPING_CHARGES_AMT,"
+					+ "T1.TOTAL_SUPPLIER_RESPONSIBILITY_PCT,T1.SUPPLIER_RESP_ADDL_SHIPPING_CHARGES_AMT,"
+					+ "T1.OVERALL_ADJUSTMENT_AMT,T1.DIAGNOSTIC_ADJUSTMENT_AMT,T1.TOTAL_AMT,"
+					+ "T1.TOTAL_MARKET_CLAIM,T1.SUB_TOTAL_AMT,T1.CALC_SHIPPING_RESP_PCT,"
+					+ "SUPPLIER_RESP_ADDL_SHIPPING_CHARGES_AMT ,T1.TOTAL_SUPPLIER_CHARGE_AMT,"
+					+ "T2.STATUS_NAME,T1.TOTAL_SUPPLIER_RESP_SUB_TOTAL_AMT"
+					/*Start - Ability to enter overall adjustments data by individual plants*/
+					+ ", T1.PLANT_OVERALL_ADJ_FLAG "
+					/*End - Ability to enter overall adjustments data by individual plants*/
+					+ " FROM "
+					+ " dbo "
+					+ ".tblVOUCHER_SUMMARY T1 (NOLOCK) ,"
+					+ " dbo "
+					+ ".tblSTATUS T2 (NOLOCK)"
+					+ " WHERE "
+					+ " T1.SUPP_NO= 011620 AND T1.STATUS_ID = T2.STATUS_ID";
+		
+		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+		
+		dataList = jdbcTemplate.queryForList(
+						GET_CURR_VCHR_SUMMARY);
+		System.out.println(dataList);
+		
+/*		log.info("fetching list of alerts data...");
 		List<Alert> findAll = alertRepository.findAll();
-	    log.info("[FIND_ALL] {}", findAll);
-		return findAll;
+	    log.info("[FIND_ALL] {}", findAll);*/
+		return dataList;
 		
 	}
 
@@ -84,21 +113,5 @@ public class AlertController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
-	
-	 @GetMapping("/alerts/export/excel")
-	    public void exportToExcel(HttpServletResponse response) throws IOException {
-	        response.setContentType("application/octet-stream");
-	        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-	        String currentDateTime = dateFormatter.format(new Date());
-	         
-	        String headerKey = "Content-Disposition";
-	        String headerValue = "attachment; filename=alerts_" + currentDateTime + ".xlsx";
-	        response.setHeader(headerKey, headerValue);
-	         
-	        List<Alert> findAll = alertRepository.findAll();
-	         
-	        UserExcelExporter excelExporter = new UserExcelExporter(findAll);
-	         
-	        excelExporter.export(response);    
-	    }  
+ 
 }
