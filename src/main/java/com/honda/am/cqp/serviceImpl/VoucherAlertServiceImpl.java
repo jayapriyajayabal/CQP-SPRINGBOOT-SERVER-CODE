@@ -34,17 +34,15 @@ public class VoucherAlertServiceImpl implements VoucherAlertService {
 		List<VoucherDto> list = new ArrayList<>();
 		for (int i = 0; i < dataList.size(); i++) {
 			// TODO : VoucherDto
-			/*
-			 * UserDto userDto = new UserDto();
-			 * 
-			 * userDto.setUserLogin(dataList.get(i).get("USER_LOGIN").toString());
-			 * userDto.setUserType(dataList.get(i).get("USER_TYPE").toString());
-			 * userDto.setFirstName(dataList.get(i).get("USER_FIRST_NAME").toString());
-			 * userDto.setLastName(dataList.get(i).get("USER_LAST_NAME").toString()); //
-			 * userDto.setUserLogin(dataList.get(i).get("USER_SUPP_NO").toString());
-			 * 
-			 * list.add(userDto);
-			 */
+			
+			 VoucherDto voucherDto = new VoucherDto();
+			  
+			 voucherDto.setSupplierNumber((String) dataList.get(i).get("SUPP_NO"));
+			 voucherDto.setSupplierName((String) dataList.get(i).get("SUPP_NAME"));
+			 voucherDto.setStatus((String) dataList.get(i).get("STATUS_NAME"));
+			  
+			  list.add(voucherDto);
+			 
 		}
 		return list;
 

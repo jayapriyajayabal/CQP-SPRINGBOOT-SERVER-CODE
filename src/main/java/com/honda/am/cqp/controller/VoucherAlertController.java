@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.honda.am.cqp.dto.UserDto;
-import com.honda.am.cqp.service.UserAlertService;
-import com.honda.am.cqp.util.UserExcelExporterUtil;
+import com.honda.am.cqp.dto.VoucherDto;
+import com.honda.am.cqp.service.VoucherAlertService;
+import com.honda.am.cqp.util.VoucherExcelExporterUtil;
 
 /**
  * @author Shrirang Kadale
@@ -29,19 +29,24 @@ import com.honda.am.cqp.util.UserExcelExporterUtil;
 @RequestMapping("/api/alerts")
 public class VoucherAlertController {
 	@Autowired
-	private UserAlertService userAlertService;
+	private VoucherAlertService voucherAlertService;
+	
+	@GetMapping("/voucher")
+	public List<VoucherDto> getVouchers(HttpServletResponse response) throws IOException {
+		return voucherAlertService.getVoucherAlerts();
+	}
 
 	@GetMapping("/voucher/export/excel")
 	public void exportToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=alerts_sheet.xls";
+		String headerValue = "attachment; filename=voucher_sheet.xls";
 		response.setHeader(headerKey, headerValue);
 
-		List<UserDto> list = userAlertService.getUserAlerts();
+		List<VoucherDto> list = voucherAlertService.getVoucherAlerts();
 
-		UserExcelExporterUtil excelExporter = new UserExcelExporterUtil(list);
+		VoucherExcelExporterUtil excelExporter = new VoucherExcelExporterUtil(list);
 
 		excelExporter.export(response);
 	}

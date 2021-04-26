@@ -39,7 +39,9 @@ public class VoucherAlertDaoImpl implements VoucherAlertDao {
 				+ ", T1.PLANT_OVERALL_ADJ_FLAG "
 				/* End - Ability to enter overall adjustments data by individual plants */
 				+ " FROM " + " dbo " + ".tblVOUCHER_SUMMARY T1 (NOLOCK) ," + " dbo " + ".tblSTATUS T2 (NOLOCK)"
-				+ " WHERE " + " T1.SUPP_NO= 011620 AND T1.STATUS_ID = T2.STATUS_ID";
+				+ " WHERE " 
+				+ " T1.SUPP_NO= 140290 AND "
+				+ "T1.STATUS_ID = T2.STATUS_ID";
 
 		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 

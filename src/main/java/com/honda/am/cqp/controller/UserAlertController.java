@@ -30,13 +30,18 @@ public class UserAlertController {
 	
 	@Autowired
 	private UserAlertService userAlertService;
+	
+	@GetMapping("/users")
+	public List<UserDto> getUserAlerts(HttpServletResponse response) throws IOException {
+		return userAlertService.getUserAlerts();
+	}
 
 	@GetMapping("/user/export/excel")
 	public void exportToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=alerts_sheet.xls";
+		String headerValue = "attachment; filename=users_sheet.xls";
 		response.setHeader(headerKey, headerValue);
 
 		List<UserDto> list = userAlertService.getUserAlerts();
