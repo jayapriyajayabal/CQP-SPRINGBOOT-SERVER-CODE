@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.honda.am.cqp.dao.VoucherAlertDao;
 
@@ -16,6 +17,8 @@ import com.honda.am.cqp.dao.VoucherAlertDao;
  * @author Shrirang Kadale
  *
  */
+
+@Repository
 public class VoucherAlertDaoImpl implements VoucherAlertDao {
 
 	@Autowired

@@ -27,6 +27,7 @@ import com.honda.am.cqp.util.UserExcelExporterUtil;
 @CrossOrigin
 @RequestMapping("/api/alerts")
 public class UserAlertController {
+	
 	@Autowired
 	private UserAlertService userAlertService;
 

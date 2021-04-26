@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.honda.am.cqp.dao.VoucherAlertDao;
-import com.honda.am.cqp.dto.UserDto;
 import com.honda.am.cqp.dto.VoucherDto;
 import com.honda.am.cqp.service.VoucherAlertService;
 
@@ -18,6 +18,8 @@ import com.honda.am.cqp.service.VoucherAlertService;
  * @author Shrirang Kadale
  *
  */
+
+@Service
 public class VoucherAlertServiceImpl implements VoucherAlertService {
 
 	@Autowired
