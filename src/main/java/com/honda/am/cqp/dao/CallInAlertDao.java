@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.honda.am.cqp.dao;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author Shrirang Kadale
+ *
+ */
+public interface CallInAlertDao {
+	
+	public List<Map<String, Object>> getCallInAlerts();
+
+}
