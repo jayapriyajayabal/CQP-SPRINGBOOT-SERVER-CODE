@@ -68,7 +68,7 @@ public class VoucherExcelExporterUtil {
             int columnCount = 0;
              
             createCell(row, columnCount++, user.getSupplierNumber(), style);
-            createCell(row, columnCount++, user.getSupplierName(), style);
+            createCell(row, columnCount++, user.getSupplierDesc(), style);
             createCell(row, columnCount++, user.getStatus(), style);
         }
     }

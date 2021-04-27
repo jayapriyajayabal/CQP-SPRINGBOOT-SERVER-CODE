@@ -15,4 +15,6 @@ public interface UserAlertService {
 
 	public List<UserDto> getUserAlerts();
 
+	public Integer getUserAlertsCount();
+
 }

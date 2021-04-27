@@ -69,6 +69,10 @@ public class UserExcelExporterUtil {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
              
+            //TODO : 2671 rows - export to excel taking so much time
+            if(rowCount > 200) {
+            	break;
+            }
             createCell(row, columnCount++, user.getUserLogin(), style);
             createCell(row, columnCount++, user.getUserType(), style);
             createCell(row, columnCount++, user.getFirstName(), style);

@@ -27,32 +27,41 @@ public class UserAlertDaoImpl implements UserAlertDao {
 	@Override
 	public List<Map<String, Object>> getUserAlerts() {		
 		
-		final String GET_USER_DETAIL_ADMIN =
-				new StringBuffer()
-					.append(" SELECT USER_PROFILE.USER_FIRST_NAME AS USER_FIRST_NAME,")
-					.append(" USER_PROFILE.USER_LAST_NAME AS USER_LAST_NAME, ")
-					.append(" USER_PROFILE.USER_LOGIN AS USER_LOGIN,")
-					.append(" USER_PROFILE.USER_TYPE AS USER_TYPE, ")
-					.append(" USER_PROFILE.SUPP_NO AS SUPP_NO,")
-					.append(" Convert(varchar(10),USER_LAST_LOGIN,101) AS USER_LAST_LOGIN, ")
-					/*Start - Enhancement - Display security received date for no role search*/
-					.append(" Convert(varchar(10),SECURITY_RECEIVED_DT,101) AS SECURITY_RECEIVED_DT, ")
-					/*End - Enhancement - Display security received date for no role search*/
-					/*Start-Enhancement-Ability to view if user exist in security*/
-					.append(" EXIST_IN_SECURITY, ")
-					/*End-Enhancement-Ability to view if user exist in security*/
-					.append(" ROLE_DESC.ROLE_NAME AS ROLE_NAME, ROLE_DESC.ROLE_ID AS ROLE_ID ")
-					.append(" FROM ").append("dbo.tblUSER_PROFILE").append(" USER_PROFILE  LEFT OUTER JOIN ")
-					.append("dbo.tblUSER_ROLE_MAPPING").append(" USER_ROLE_MAP ")
-					.append(" ON USER_PROFILE.USER_LOGIN = USER_ROLE_MAP.USER_LOGIN LEFT OUTER JOIN ")
-					.append("dbo.tblROLE_DESC").append(" ROLE_DESC ON ")
-					.append(" USER_ROLE_MAP.ROLE_ID=ROLE_DESC.ROLE_ID")
-					.append(" where 1=1 ").toString();
+
+		final String SELECT_USER_ALERTS_DTLS = new StringBuffer()
+				.append("SELECT count(*) USER_PROFILE.USER_LOGIN, USER_TYPE, USER_FIRST_NAME, ")
+				.append("USER_LAST_NAME,  USER_PROFILE.SUPP_NO as SUPP_SUPP_NO, ")
+				.append("CONVERT(VARCHAR,USER_LAST_LOGIN,101) AS USER_LAST_LOGIN,")
+				.append("SUPP_MAP.SUPP_NO AS CQ_SUPP_NO").append(" FROM ").append("dbo.tblUSER_PROFILE")
+				.append(" USER_PROFILE ").append(" LEFT OUTER JOIN ").append("dbo.tblUSER_ROLE_MAPPING")
+				.append(" USER_ROLE_MAP ").append(" ON USER_PROFILE.USER_LOGIN = USER_ROLE_MAP.USER_LOGIN ")
+				.append(" LEFT OUTER JOIN ").append("dbo.tblCQ_SUPPLIER_MAPPING").append(" SUPP_MAP")
+				.append(" ON USER_PROFILE.USER_LOGIN = SUPP_MAP.CQ_USER_LOGIN")
+				.append(" WHERE USER_ROLE_MAP.ROLE_ID IS NULL").toString();
 
 		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
-		dataList = jdbcTemplate.queryForList(GET_USER_DETAIL_ADMIN);
-		System.out.println(dataList);
+		dataList = jdbcTemplate.queryForList(SELECT_USER_ALERTS_DTLS);
 		return dataList;
 		}
+
+	@Override
+	public Integer getUserAlertsCount() {
+		
+		final String SELECT_USER_ALERTS_DTLS_COUNT = new StringBuffer()
+				.append("SELECT COUNT(*) AS USERS_WITH_NO_ROLES")
+				.append(" FROM ").append("dbo.tblUSER_PROFILE")
+				.append(" USER_PROFILE ").append(" LEFT OUTER JOIN ").append("dbo.tblUSER_ROLE_MAPPING")
+				.append(" USER_ROLE_MAP ").append(" ON USER_PROFILE.USER_LOGIN = USER_ROLE_MAP.USER_LOGIN ")
+				.append(" LEFT OUTER JOIN ").append("dbo.tblCQ_SUPPLIER_MAPPING").append(" SUPP_MAP")
+				.append(" ON USER_PROFILE.USER_LOGIN = SUPP_MAP.CQ_USER_LOGIN")
+				.append(" WHERE USER_ROLE_MAP.ROLE_ID IS NULL").toString();
+
+
+Integer count = jdbcTemplate.queryForObject(
+		SELECT_USER_ALERTS_DTLS_COUNT, Integer.class);
+
+return count;
+			
+	}
 
 }

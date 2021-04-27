@@ -47,4 +47,10 @@ public class UserAlertServiceImpl implements UserAlertService {
 		return list;
 
 	}
+
+	@Override
+	public Integer getUserAlertsCount() {
+		
+		return userAlertDao.getUserAlertsCount();
+	}
 }

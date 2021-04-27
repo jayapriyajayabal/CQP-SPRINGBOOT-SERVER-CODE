@@ -13,4 +13,6 @@ import java.util.Map;
 public interface UserAlertDao {
 
 	public List<Map<String, Object>> getUserAlerts();
+
+	public Integer getUserAlertsCount();
 }

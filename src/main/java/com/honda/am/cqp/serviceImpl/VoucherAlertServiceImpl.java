@@ -38,7 +38,7 @@ public class VoucherAlertServiceImpl implements VoucherAlertService {
 			 VoucherDto voucherDto = new VoucherDto();
 			  
 			 voucherDto.setSupplierNumber((String) dataList.get(i).get("SUPP_NO"));
-			 voucherDto.setSupplierName((String) dataList.get(i).get("SUPP_NAME"));
+			 voucherDto.setSupplierDesc((String) dataList.get(i).get("VOUCHER_DESC"));
 			 voucherDto.setStatus((String) dataList.get(i).get("STATUS_NAME"));
 			  
 			  list.add(voucherDto);

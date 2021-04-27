@@ -10,7 +10,7 @@ package com.honda.am.cqp.dto;
 public class VoucherDto {
 	
 	private String supplierNumber;
-	private String supplierName;
+	private String supplierDesc;
 	private String status;
 	public String getSupplierNumber() {
 		return supplierNumber;
@@ -18,11 +18,11 @@ public class VoucherDto {
 	public void setSupplierNumber(String supplierNumber) {
 		this.supplierNumber = supplierNumber;
 	}
-	public String getSupplierName() {
-		return supplierName;
+	public String getSupplierDesc() {
+		return supplierDesc;
 	}
-	public void setSupplierName(String supplierName) {
-		this.supplierName = supplierName;
+	public void setSupplierDesc(String supplierDesc) {
+		this.supplierDesc = supplierDesc;
 	}
 	public String getStatus() {
 		return status;
@@ -32,7 +32,7 @@ public class VoucherDto {
 	}
 	@Override
 	public String toString() {
-		return "VoucherDto [supplierNumber=" + supplierNumber + ", supplierName=" + supplierName + ", status=" + status
+		return "VoucherDto [supplierNumber=" + supplierNumber + ", supplierName=" + supplierDesc + ", status=" + status
 				+ "]";
 	}
 

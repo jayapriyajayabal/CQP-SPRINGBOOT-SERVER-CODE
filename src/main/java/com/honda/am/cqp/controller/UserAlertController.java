@@ -32,8 +32,8 @@ public class UserAlertController {
 	private UserAlertService userAlertService;
 	
 	@GetMapping("/users")
-	public List<UserDto> getUserAlerts(HttpServletResponse response) throws IOException {
-		return userAlertService.getUserAlerts();
+	public Integer getUserAlerts(HttpServletResponse response) throws IOException {
+		return userAlertService.getUserAlertsCount();
 	}
 
 	@GetMapping("/user/export/excel")
@@ -45,6 +45,8 @@ public class UserAlertController {
 		response.setHeader(headerKey, headerValue);
 
 		List<UserDto> list = userAlertService.getUserAlerts();
+		
+		System.out.println("UserDto ===== " + list);
 
 		UserExcelExporterUtil excelExporter = new UserExcelExporterUtil(list);
 
