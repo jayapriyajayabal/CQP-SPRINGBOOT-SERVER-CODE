@@ -23,15 +23,6 @@ import com.honda.am.cqp.repository.UserRepository;
  *
  */
 @Service
-public class AlertsService implements IAlertsService {
+public class AlertsService {
 	
-	@Autowired
-	private UserRepository userRepository;
-	
-	 @Override
-	public List<User> getUserDetails() {
-		 List<User> user =  userRepository.getUserAlerts();
-	        return user;
-		
-	}
 }

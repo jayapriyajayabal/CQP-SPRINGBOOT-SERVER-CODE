@@ -1,26 +1,23 @@
-/**
- * 
- *//*
+
 package com.honda.am.cqp.service;
 
 import java.util.List;
 
-import com.honda.am.cqp.dto.CallInDto;
-import com.honda.am.cqp.dto.UserDto;
-import com.honda.am.cqp.dto.VoucherDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.honda.am.cqp.model.User;
+import com.honda.am.cqp.repository.UserRepository;
 
-*//**
- * @author Shrirang Kadale
- *
- *//*
-public interface AlertsExportService {
+@Service
+public class AlertsExportService {
 	
-	public List<CallInDto> getCallInAlerts();
+	@Autowired
+	private UserRepository userRepository;
 	
-	public List<User> getUserAlerts();
-	
-	public List<VoucherDto> getVoucherAlerts();
-
+	public List<User> getUserDetails() {
+		 List<User> user =  userRepository.getUserAlerts();
+	        return user;
+		
+	}
 }
-*/
