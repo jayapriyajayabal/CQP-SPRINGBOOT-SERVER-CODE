@@ -10,9 +10,11 @@ import java.util.Map;
  * @author Shrirang Kadale
  *
  */
-public interface UserAlertDao {
+public interface AlertsExportDao {
 
+	List<Map<String, Object>> getVoucherAlerts();
+	
+	public List<Map<String, Object>> getCallInAlerts();
+	
 	public List<Map<String, Object>> getUserAlerts();
-
-	public Integer getUserAlertsCount();
 }
