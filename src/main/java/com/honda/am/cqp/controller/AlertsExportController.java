@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.honda.am.cqp.model.User;
+import com.honda.am.cqp.model.TblUSER_PROFILE;
+import com.honda.am.cqp.model.TblVOUCHER_SUMMARY;
 import com.honda.am.cqp.service.AlertsExportService;
 
 /**
@@ -31,7 +32,7 @@ public class AlertsExportController {
 	@Autowired
 	private AlertsExportService alertsExportService;
 
-/*	@GetMapping("/voucher/export/excel")
+	@GetMapping("/voucher/export/excel")
 	public void exportVoucherToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
@@ -39,12 +40,12 @@ public class AlertsExportController {
 		String headerValue = "attachment; filename=voucher_sheet.xls";
 		response.setHeader(headerKey, headerValue);
 
-		List<VoucherDto> list = alertsExportService.getVoucherAlerts();
+		List<TblVOUCHER_SUMMARY> list = alertsExportService.getVoucherDetails();
 
-		VoucherExcelExporterUtil excelExporter = new VoucherExcelExporterUtil(list);
+	//	VoucherExcelExporterUtil excelExporter = new VoucherExcelExporterUtil(list);
 
-		excelExporter.export(response);
-	}*/
+	//	excelExporter.export(response);
+	}
 	
 	@GetMapping("/user/export/excel")
 	public void exportUserToExcel(HttpServletResponse response) throws IOException {
@@ -54,9 +55,9 @@ public class AlertsExportController {
 		String headerValue = "attachment; filename=users_sheet.xls";
 		response.setHeader(headerKey, headerValue);
 
-		List<User> list = alertsExportService.getUserDetails();
+		List<TblUSER_PROFILE> list = alertsExportService.getUserDetails();
 		
-		System.out.println("UserDto ===== " + list);
+		System.out.println("UserDto ===== " + list.toString());
 
 		//UserExcelExporterUtil excelExporter = new UserExcelExporterUtil(list);
 

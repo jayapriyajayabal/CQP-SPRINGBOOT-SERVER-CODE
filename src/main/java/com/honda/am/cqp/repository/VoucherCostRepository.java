@@ -1,4 +1,4 @@
-package com.honda.am.cqp.repository;
+/*package com.honda.am.cqp.repository;
 
 import java.util.List;
 
@@ -28,4 +28,4 @@ public interface VoucherCostRepository extends JpaRepository<User, Long> {
     		"AND (A.FOB_AMT=0 OR A.DEALER_NET_AMT=0 OR A.FLAT_RATE_AMT=0 OR A.KILOGRAMS_QTY=0 OR A.POUNDS_QTY=0)\r\n" + 
     		"", nativeQuery = true)
     public List<User> getVoucherAlerts();
-}
+}*/

@@ -13,15 +13,14 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
-import com.honda.am.cqp.model.User;
+import com.honda.am.cqp.model.TblUSER_PROFILE;
  
 public class UserExcelExporterUtil {
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<User> listAlerts;
+    private List<TblUSER_PROFILE> listAlerts;
      
-    public UserExcelExporterUtil(List<User> userList) {
+    public UserExcelExporterUtil(List<TblUSER_PROFILE> userList) {
         this.listAlerts = userList;
         workbook = new XSSFWorkbook();
     }
@@ -66,7 +65,7 @@ public class UserExcelExporterUtil {
         XSSFFont font = workbook.createFont();
         font.setFontHeight(14);
         style.setFont(font);
-        for (User user : listAlerts) {
+        for (TblUSER_PROFILE user : listAlerts) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
              
@@ -74,11 +73,11 @@ public class UserExcelExporterUtil {
             if(rowCount > 200) {
             	break;
             }
-            createCell(row, columnCount++, user.getUSER_LOGIN(), style);
-            createCell(row, columnCount++, user.getUSER_TYPE(), style);
-            createCell(row, columnCount++, user.getUSER_FIRST_NAME(), style);
-            createCell(row, columnCount++, user.getUSER_LAST_NAME(), style);
-            createCell(row, columnCount++, user.getSUPP_NO(), style); 
+            createCell(row, columnCount++, user.getUserLogin(), style);
+            createCell(row, columnCount++, user.getUserType(), style);
+            createCell(row, columnCount++, user.getUserFirstName(), style);
+            createCell(row, columnCount++, user.getUserLastName(), style);
+            createCell(row, columnCount++, user.getSuppNo(), style); 
         }
     }
      
