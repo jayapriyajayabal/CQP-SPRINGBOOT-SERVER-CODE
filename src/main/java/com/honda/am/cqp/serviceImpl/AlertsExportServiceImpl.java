@@ -28,7 +28,7 @@ public class AlertsExportServiceImpl implements AlertsExportService {
 
 	@Autowired
 	private AlertsExportDao alertsExportDao;
-
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -63,6 +63,10 @@ public class AlertsExportServiceImpl implements AlertsExportService {
 	@Override
 	public List<User> getUserAlerts() {
 		
+		
+		
+		
+		//return null;
 		List<User> list = userRepository.getUserAlerts();
 		
 		return list;

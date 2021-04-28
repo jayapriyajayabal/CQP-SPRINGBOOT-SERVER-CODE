@@ -5,7 +5,9 @@ package com.honda.am.cqp.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,13 +19,13 @@ import javax.persistence.Table;
 @Table(name = "dbo.tblUSER_PROFILE")
 public class User {
 	
-	@Id
+    @Id
     private String USER_LOGIN;
     private String USER_TYPE;
     private String USER_FIRST_NAME;
     private String USER_LAST_NAME;
-    private LocalDate SER_LAST_LOGIN;
-    private String UPP_NO;
+    private LocalDate USER_LAST_LOGIN;
+    private String SUPP_NO;
     private String EMAIL_ID;
     private String FAX_NO;
     private LocalDate SECURITY_RECEIVED_DT;
@@ -35,6 +37,7 @@ public class User {
 	/**
 	 * @return the uSER_LOGIN
 	 */
+    @Column(name = "USER_LOGIN", nullable = false)
 	public String getUSER_LOGIN() {
 		return USER_LOGIN;
 	}
@@ -47,6 +50,7 @@ public class User {
 	/**
 	 * @return the uSER_TYPE
 	 */
+	@Column(name = "USER_TYPE", nullable = true)
 	public String getUSER_TYPE() {
 		return USER_TYPE;
 	}
@@ -59,6 +63,7 @@ public class User {
 	/**
 	 * @return the uSER_FIRST_NAME
 	 */
+	@Column(name = "USER_FIRST_NAME", nullable = true)
 	public String getUSER_FIRST_NAME() {
 		return USER_FIRST_NAME;
 	}
@@ -71,6 +76,7 @@ public class User {
 	/**
 	 * @return the uSER_LAST_NAME
 	 */
+	@Column(name = "USER_LAST_NAME", nullable = true)
 	public String getUSER_LAST_NAME() {
 		return USER_LAST_NAME;
 	}
@@ -83,30 +89,33 @@ public class User {
 	/**
 	 * @return the sER_LAST_LOGIN
 	 */
-	public LocalDate getSER_LAST_LOGIN() {
-		return SER_LAST_LOGIN;
+	@Column(name = "USER_LAST_LOGIN", nullable = true)
+	public LocalDate getUSER_LAST_LOGIN() {
+		return USER_LAST_LOGIN;
 	}
 	/**
 	 * @param sER_LAST_LOGIN the sER_LAST_LOGIN to set
 	 */
-	public void setSER_LAST_LOGIN(LocalDate sER_LAST_LOGIN) {
-		SER_LAST_LOGIN = sER_LAST_LOGIN;
+	public void setUSER_LAST_LOGIN(LocalDate sER_LAST_LOGIN) {
+		USER_LAST_LOGIN = sER_LAST_LOGIN;
 	}
 	/**
 	 * @return the uPP_NO
 	 */
-	public String getUPP_NO() {
-		return UPP_NO;
+	@Column(name = "SUPP_NO", nullable = true)
+	public String getSUPP_NO() {
+		return SUPP_NO;
 	}
 	/**
 	 * @param uPP_NO the uPP_NO to set
 	 */
-	public void setUPP_NO(String uPP_NO) {
-		UPP_NO = uPP_NO;
+	public void setSUPP_NO(String uPP_NO) {
+		SUPP_NO = uPP_NO;
 	}
 	/**
 	 * @return the eMAIL_ID
 	 */
+	@Column(name = "EMAIL_ID", nullable = true)
 	public String getEMAIL_ID() {
 		return EMAIL_ID;
 	}
@@ -119,6 +128,7 @@ public class User {
 	/**
 	 * @return the fAX_NO
 	 */
+	@Column(name = "FAX_NO", nullable = true)
 	public String getFAX_NO() {
 		return FAX_NO;
 	}
@@ -131,6 +141,7 @@ public class User {
 	/**
 	 * @return the sECURITY_RECEIVED_DT
 	 */
+	@Column(name = "SECURITY_RECEIVED_DT", nullable = true)
 	public LocalDate getSECURITY_RECEIVED_DT() {
 		return SECURITY_RECEIVED_DT;
 	}
@@ -143,6 +154,7 @@ public class User {
 	/**
 	 * @return the eXIST_IN_SECURITY
 	 */
+	@Column(name = "EXIST_IN_SECURITY", nullable = true)
 	public String getEXIST_IN_SECURITY() {
 		return EXIST_IN_SECURITY;
 	}

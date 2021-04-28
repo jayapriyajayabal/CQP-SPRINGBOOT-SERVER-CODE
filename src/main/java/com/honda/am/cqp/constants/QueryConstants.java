@@ -7,7 +7,7 @@ package com.honda.am.cqp.constants;
  * @author Shrirang Kadale
  *
  */
-public interface QueryConstants {
+public class QueryConstants {
 	
 	public static final String SELECT_USER_ALERTS_DTLS = new StringBuffer()
 			.append("SELECT count(*) USER_PROFILE.USER_LOGIN, USER_TYPE, USER_FIRST_NAME, ")
