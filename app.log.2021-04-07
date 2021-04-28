@@ -1,9 +1,0 @@
-[DEBUG] 2021-04-07 23:01:13,638 net.guides.springboot2.crud.Application main - this is a debug log message
-[INFO] 2021-04-07 23:01:13,641 net.guides.springboot2.crud.Application main - this is a information log message
-[WARN] 2021-04-07 23:01:13,641 net.guides.springboot2.crud.Application main - this is a warning log message
-[DEBUG] 2021-04-07 23:03:11,707 net.guides.springboot2.crud.Application main - this is a debug log message
-[INFO] 2021-04-07 23:03:11,709 net.guides.springboot2.crud.Application main - this is a information log message
-[WARN] 2021-04-07 23:03:11,710 net.guides.springboot2.crud.Application main - this is a warning log message
-[DEBUG] 2021-04-07 23:04:06,646 net.guides.springboot2.crud.Application main - this is a debug log message
-[INFO] 2021-04-07 23:04:06,649 net.guides.springboot2.crud.Application main - this is a information log message
-[WARN] 2021-04-07 23:04:06,649 net.guides.springboot2.crud.Application main - this is a warning log message

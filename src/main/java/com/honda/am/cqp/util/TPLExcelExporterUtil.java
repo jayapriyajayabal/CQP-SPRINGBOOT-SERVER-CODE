@@ -1,4 +1,4 @@
-package com.honda.am.cqp.util;
+/*package com.honda.am.cqp.util;
  
 import java.io.IOException;
 import java.util.List;
@@ -13,22 +13,22 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.honda.am.cqp.dto.TPLDto;
 
-import com.honda.am.cqp.model.User;
  
-public class UserExcelExporterUtil {
+public class TPLExcelExporterUtil {
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<User> listAlerts;
+    private List<TPLDto> listAlerts;
      
-    public UserExcelExporterUtil(List<User> userList) {
-        this.listAlerts = userList;
+    public TPLExcelExporterUtil(List<TPLDto> list) {
+        this.listAlerts = list;
         workbook = new XSSFWorkbook();
     }
  
  
     private void writeHeaderLine() {
-        sheet = workbook.createSheet("User-Sheet");
+        sheet = workbook.createSheet("Alert-Sheet");
          
         Row row = sheet.createRow(0);
          
@@ -66,19 +66,15 @@ public class UserExcelExporterUtil {
         XSSFFont font = workbook.createFont();
         font.setFontHeight(14);
         style.setFont(font);
-        for (User user : listAlerts) {
+        for (TPLDto user : listAlerts) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
              
-            //TODO : 2671 rows - export to excel taking so much time
-            if(rowCount > 200) {
-            	break;
-            }
-            createCell(row, columnCount++, user.getUSER_LOGIN(), style);
-            createCell(row, columnCount++, user.getUSER_TYPE(), style);
-            createCell(row, columnCount++, user.getUSER_FIRST_NAME(), style);
-            createCell(row, columnCount++, user.getUSER_LAST_NAME(), style);
-            createCell(row, columnCount++, user.getSUPP_NO(), style); 
+            createCell(row, columnCount++, user.getUserLogin(), style);
+            createCell(row, columnCount++, user.getUserType(), style);
+            createCell(row, columnCount++, user.getFirstName(), style);
+            createCell(row, columnCount++, user.getLastName(), style);
+            createCell(row, columnCount++, user.getSupplierNumber(), style); 
         }
     }
      
@@ -94,3 +90,4 @@ public class UserExcelExporterUtil {
          
     }
 }
+*/

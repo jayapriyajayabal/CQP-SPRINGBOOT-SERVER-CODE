@@ -16,7 +16,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "dbo.tblUSER_PROFILE")
+@Table(name = "tblUSER_PROFILE")
 public class User {
 	
     @Id

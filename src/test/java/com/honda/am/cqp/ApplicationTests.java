@@ -1,4 +1,4 @@
-package cqp.springboot.server.cqpspringbootApplication;
+package com.honda.am.cqp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
