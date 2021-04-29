@@ -23,7 +23,6 @@ public class AlertsExportService {
 	private VoucherRepository voucherRepository;
 
 	public List<UserDto> getUserDetails() {
-		try {
 			List<Object[]> user = userRepository.getUserAlerts();
 			
 			List<UserDto> list = new ArrayList<>();
@@ -36,16 +35,13 @@ public class AlertsExportService {
 				userDto.setUserFirstName((String) dto[2]);
 				userDto.setUserLastName((String) dto[3]);
 				userDto.setSuppNo((String) dto[4]);
-				userDto.setUserLastLogin((Timestamp) dto[5]);
+				//userDto.setUserLastLogin(dto[5]);
 				
 				list.add(userDto);
 				
 			}
 
 			return list;
-		} finally {
-			System.err.println("I am happy");
-		}
 	}
 
 
