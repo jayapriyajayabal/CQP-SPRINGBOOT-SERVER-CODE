@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="tblUSER_PROFILE")
-@NamedQuery(name="TblUSER_PROFILE.findAll", query="SELECT t FROM TblUSER_PROFILE t")
+//@NamedQuery(name="TblUSER_PROFILE.findAll", query="SELECT t FROM TblUSER_PROFILE t")
 public class TblUSER_PROFILE implements Serializable {
 	private static final long serialVersionUID = 1L;
 

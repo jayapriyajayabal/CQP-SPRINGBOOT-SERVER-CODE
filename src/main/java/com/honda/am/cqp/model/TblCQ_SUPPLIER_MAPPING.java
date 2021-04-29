@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Entity
 @Table(name="tblCQ_SUPPLIER_MAPPING")
 @NamedQuery(name="TblCQ_SUPPLIER_MAPPING.findAll", query="SELECT t FROM TblCQ_SUPPLIER_MAPPING t")
-public class TblCQ_SUPPLIER_MAPPING {
+public class TblCQ_SUPPLIER_MAPPING implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
 	private TblCQ_SUPPLIER_MAPPINGPK id;
