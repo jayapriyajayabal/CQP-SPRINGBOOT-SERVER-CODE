@@ -1,4 +1,4 @@
-/*package com.honda.am.cqp.util;
+package com.honda.am.cqp.util;
  
 import java.io.IOException;
 import java.util.List;
@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -36,7 +38,8 @@ public class VoucherExcelExporterUtil {
         font.setBold(true);
         font.setFontHeight(16);
         style.setFont(font);
-         
+        style.setFillBackgroundColor(IndexedColors.LIGHT_GREEN.getIndex());
+        style.setFillPattern(FillPatternType.ALT_BARS);  
         createCell(row, 0, "Supplier No", style);      
         createCell(row, 1, "Supplier Name", style);       
         createCell(row, 2, "Status", style);    
@@ -61,15 +64,15 @@ public class VoucherExcelExporterUtil {
  
         CellStyle style = workbook.createCellStyle();
         XSSFFont font = workbook.createFont();
-        font.setFontHeight(14);
+        font.setFontHeight(12);
         style.setFont(font);
-        for (VoucherDto user : listAlerts) {
+        for (VoucherDto voucher : listAlerts) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
              
-            createCell(row, columnCount++, user.getSupplierNumber(), style);
-            createCell(row, columnCount++, user.getSupplierDesc(), style);
-            createCell(row, columnCount++, user.getStatus(), style);
+            createCell(row, columnCount++, voucher.getSuppNo(), style);
+            createCell(row, columnCount++, voucher.getSuppName(), style);
+            createCell(row, columnCount++, voucher.getStatusName(), style);
         }
     }
      
@@ -85,4 +88,3 @@ public class VoucherExcelExporterUtil {
          
     }
 }
-*/
