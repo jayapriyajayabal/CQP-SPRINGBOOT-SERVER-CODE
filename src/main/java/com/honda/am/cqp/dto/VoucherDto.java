@@ -27,7 +27,7 @@ public class VoucherDto {
 	private String statusName;
 	private BigDecimal totalSupplierRespSubTotalAmt;
 	private String plantOverallAdjFlag;
-	
+
 	public VoucherDto() {
 	}
 

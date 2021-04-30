@@ -9,10 +9,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.honda.am.cqp.dto.CallInDto;
+import com.honda.am.cqp.dto.TPLDto;
 import com.honda.am.cqp.dto.UserDto;
+import com.honda.am.cqp.dto.VoucherCostDto;
 import com.honda.am.cqp.dto.VoucherDto;
 import com.honda.am.cqp.repository.CallInRepository;
+import com.honda.am.cqp.repository.TPLRepository;
 import com.honda.am.cqp.repository.UserRepository;
+import com.honda.am.cqp.repository.VoucherCostRepository;
 import com.honda.am.cqp.repository.VoucherRepository;
 
 @Service
@@ -23,39 +28,45 @@ public class AlertsExportService {
 
 	@Autowired
 	private VoucherRepository voucherRepository;
-	
+
 	@Autowired
 	private CallInRepository callInRepository;
+	
+	@Autowired
+	private TPLRepository tplRepository;
+
+	@Autowired
+	private VoucherCostRepository vouchercostRepository;
 
 	public List<UserDto> getUserDetails() {
-			List<Object[]> user = userRepository.getUserAlerts();
+		List<Object[]> user = userRepository.getUserAlerts();
 
-			List<UserDto> list = new ArrayList<>();
+		List<UserDto> list = new ArrayList<>();
 
-			for (Object[] dto : user) {
+		for (Object[] dto : user) {
 
-				UserDto userDto = new UserDto();
-				userDto.setUserLogin((String) dto[0]);
-				userDto.setUserType((String) dto[1]);
-				userDto.setUserFirstName((String) dto[2]);
-				userDto.setUserLastName((String) dto[3]);
-				userDto.setSuppNo((String) dto[4]);
-				userDto.setUserLastLogin((Timestamp) dto[5]);
-				//userDto.setUserLastLogin(dto[5]);
+			UserDto userDto = new UserDto();
+			userDto.setUserLogin((String) dto[0]);
+			userDto.setUserType((String) dto[1]);
+			userDto.setUserFirstName((String) dto[2]);
+			userDto.setUserLastName((String) dto[3]);
+			userDto.setSuppNo((String) dto[4]);
+			userDto.setUserLastLogin((Timestamp) dto[5]);
+			// userDto.setUserLastLogin(dto[5]);
 
-				list.add(userDto);
+			list.add(userDto);
 
-			}
+		}
 
-			return list;
+		return list;
 	}
 
 	public List<VoucherDto> getVoucherDetails() {
 		try {
 			List<Object[]> voucher = voucherRepository.getVoucherAlerts();
-			
+
 			List<VoucherDto> list = new ArrayList<>();
-			
+
 			for (Object[] dto : voucher) {
 				VoucherDto voucherDto = new VoucherDto();
 				voucherDto.setVoucherNo((String) dto[0]);
@@ -80,40 +91,88 @@ public class AlertsExportService {
 				voucherDto.setStatusName((String) dto[19]);
 				voucherDto.setTotalSupplierRespSubTotalAmt((BigDecimal) dto[20]);
 				voucherDto.setPlantOverallAdjFlag((String) dto[21]);
-				
+
 				list.add(voucherDto);
 			}
 			return list;
-		}finally {
+		} finally {
 			System.err.println("I am happy");
 		}
 
 	}
-	
-	public List<Object[]> getCallInDetails() {
-		List<Object[]> user = callInRepository.getCallInAlerts();
 
-		List<UserDto> list = new ArrayList<>();
+	public List<CallInDto> getCallInDetails() {
+		
+		try {
+			List<Object[]> user = callInRepository.getCallInAlerts();
 
-/*		for (Object[] dto : user) {
+			List<CallInDto> list = new ArrayList<>();
 
-			UserDto userDto = new UserDto();
-			userDto.setUserLogin((String) dto[0]);
-			userDto.setUserType((String) dto[1]);
-			userDto.setUserFirstName((String) dto[2]);
-			userDto.setUserLastName((String) dto[3]);
-			userDto.setSuppNo((String) dto[4]);
-			userDto.setUserLastLogin((Timestamp) dto[5]);
-			//userDto.setUserLastLogin(dto[5]);
+			for (Object[] dto : user) {
 
-			list.add(userDto);
+				CallInDto callInDto = new CallInDto();
+				callInDto.setCallinPartSk((int) dto[0]);
+				callInDto.setSuppNo((String) dto[1]);
+				callInDto.setSuppName((String) dto[2]);
+				callInDto.setStatusName((String) dto[3]);
+			}
+			return list;
+		} finally {
+			System.err.println("I am happy");
+		}
+		
 
-		}*/
+	}
 
-		return user;
-}
-	public List<Object[]> getVoucherCostAlerts(){
-		List<Object[]> voucher =voucherRepository.getVoucherAlerts();
-		return voucher;
+	public List<VoucherCostDto> getVoucherCostAlerts() {
+
+		try {
+			List<Object[]> voucher = vouchercostRepository.getVoucherCostAlerts();
+
+			List<VoucherCostDto> list = new ArrayList<>();
+
+			for (Object[] dto : voucher) {
+				VoucherCostDto voucherDto = new VoucherCostDto();
+				voucherDto.setSuppNo((String) dto[0]);
+				voucherDto.setSuppName((String) dto[1]);
+				voucherDto.setShortPartNo((String) dto[2]);
+				voucherDto.setPartNo((String) dto[3]);
+				voucherDto.setModelNames((String) dto[4]);
+				voucherDto.setModelYears((String) dto[5]);
+				voucherDto.setFobAmt((BigDecimal) dto[6]);
+				voucherDto.setDealerNetAmt((BigDecimal) dto[7]);
+				voucherDto.setFlatRateAmt((BigDecimal) dto[8]);
+			}
+			return list;
+		} finally {
+			System.err.println("I am happy");
+		}
+
+	}
+
+	public List<TPLDto> getTPLAlerts() {
+		
+		try {
+			List<Object[]> tpl = tplRepository.getTPAAlerts();
+			
+			List<TPLDto> list = new ArrayList<>();
+			
+			for (Object[] dto : tpl) {
+				TPLDto tplDto = new TPLDto();
+				tplDto.setStatusName((String) dto[0]);
+				tplDto.setSuppName((String) dto[0]);
+				tplDto.setSuppNo((String) dto[0]);
+				tplDto.setTplRefID((int) dto[0]);
+				tplDto.setUserFirstName((String) dto[0]);
+				tplDto.setUserLastLogin((Timestamp) dto[0]);
+				tplDto.setUserLastName((String) dto[0]);
+				tplDto.setUserLogin((String) dto[0]);
+				tplDto.setUserType((String) dto[0]);
+			}
+		} finally {
+			// TODO: handle finally clause
+		}
+		
+		return null;
 	}
 }

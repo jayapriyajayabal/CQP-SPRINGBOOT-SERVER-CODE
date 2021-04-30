@@ -1,18 +1,15 @@
-/**
- * 
- */
 package com.honda.am.cqp.dto;
 
 import java.sql.Timestamp;
 
-/**
- * @author Shrirang Kadale
- *
- */
-public class UserDto {
+public class TPLDto {
+
+	private int tplRefID;
 
 	private String userLogin;
 	private String userType;
+	private String SuppName;
+	private String StatusName;
 	private String userFirstName;
 	private String userLastName;
 	private Timestamp userLastLogin;
@@ -62,14 +59,39 @@ public class UserDto {
 		return suppNo;
 	}
 
-	public void setSuppNo(String suppNo) {
-		this.suppNo = suppNo;
+	public void setSuppNo(String dto) {
+		this.suppNo = dto;
 	}
 
 	@Override
 	public String toString() {
 		return "UserDto [userLogin=" + userLogin + ", userType=" + userType + ", userFirstName=" + userFirstName
-				+ ", userLastName=" + userLastName + ", userLastLogin=" + userLastLogin + ", suppNo=" + suppNo + "]";
+				+ ", userLastName=" + userLastName + ", userLastLogin=" + userLastLogin + ", suppNo=" + suppNo
+				+ ",SuppName=" + SuppName + ",StatusName=" + StatusName + "]";
+	}
+
+	public String getStatusName() {
+		return StatusName;
+	}
+
+	public void setStatusName(String statusName) {
+		StatusName = statusName;
+	}
+
+	public String getSuppName() {
+		return SuppName;
+	}
+
+	public void setSuppName(String suppName) {
+		SuppName = suppName;
+	}
+
+	public int getTplRefID() {
+		return tplRefID;
+	}
+
+	public void setTplRefID(int tplRefID) {
+		this.tplRefID = tplRefID;
 	}
 
 }
