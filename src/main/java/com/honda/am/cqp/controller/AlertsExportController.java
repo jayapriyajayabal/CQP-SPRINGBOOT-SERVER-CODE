@@ -37,7 +37,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=voucher_sheet.xls";
+		String headerValue = "attachment; filename=voucher_sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<VoucherDto> list = alertsExportService.getVoucherDetails();
@@ -55,7 +55,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xls";
+		String headerValue = "attachment; filename=users_sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<UserDto> list = alertsExportService.getUserDetails();
@@ -72,7 +72,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xls";
+		String headerValue = "attachment; filename=users_sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<CallInDto> list = alertsExportService.getCallInDetails();
@@ -91,7 +91,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xls";
+		String headerValue = "attachment; filename=users_sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<VoucherCostDto> list = alertsExportService.getVoucherCostAlerts();
@@ -110,7 +110,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xls";
+		String headerValue = "attachment; filename=users_sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<TPLDto> list = alertsExportService.getTPLAlerts();
