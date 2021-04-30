@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.honda.am.cqp.dto.UserDto;
 import com.honda.am.cqp.dto.VoucherDto;
+import com.honda.am.cqp.repository.CallInRepository;
 import com.honda.am.cqp.repository.UserRepository;
 import com.honda.am.cqp.repository.VoucherRepository;
 
@@ -22,6 +23,9 @@ public class AlertsExportService {
 
 	@Autowired
 	private VoucherRepository voucherRepository;
+	
+	@Autowired
+	private CallInRepository callInRepository;
 
 	public List<UserDto> getUserDetails() {
 			List<Object[]> user = userRepository.getUserAlerts();
@@ -84,5 +88,32 @@ public class AlertsExportService {
 			System.err.println("I am happy");
 		}
 
+	}
+	
+	public List<Object[]> getCallInDetails() {
+		List<Object[]> user = callInRepository.getCallInAlerts();
+
+		List<UserDto> list = new ArrayList<>();
+
+/*		for (Object[] dto : user) {
+
+			UserDto userDto = new UserDto();
+			userDto.setUserLogin((String) dto[0]);
+			userDto.setUserType((String) dto[1]);
+			userDto.setUserFirstName((String) dto[2]);
+			userDto.setUserLastName((String) dto[3]);
+			userDto.setSuppNo((String) dto[4]);
+			userDto.setUserLastLogin((Timestamp) dto[5]);
+			//userDto.setUserLastLogin(dto[5]);
+
+			list.add(userDto);
+
+		}*/
+
+		return user;
+}
+	public List<Object[]> getVoucherCostAlerts(){
+		List<Object[]> voucher =voucherRepository.getVoucherAlerts();
+		return voucher;
 	}
 }

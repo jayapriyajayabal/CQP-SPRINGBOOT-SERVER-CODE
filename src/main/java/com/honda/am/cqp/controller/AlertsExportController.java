@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.honda.am.cqp.controller;
 
 import java.io.IOException;
@@ -18,11 +16,6 @@ import com.honda.am.cqp.dto.UserDto;
 import com.honda.am.cqp.dto.VoucherDto;
 import com.honda.am.cqp.service.AlertsExportService;
 import com.honda.am.cqp.util.VoucherExcelExporterUtil;
-
-/**
- * @author Shrirang Kadale
- *
- */
 
 @RestController
 @CrossOrigin
@@ -72,23 +65,28 @@ public class AlertsExportController {
 		// excelExporter.export(response);
 	}
 
-	/*
-	 * public void exportToExcel(HttpServletResponse response) throws IOException {
-	 * response.setContentType("application/octet-stream");
-	 * 
-	 * String headerKey = "Content-Disposition"; String headerValue =
-	 * "attachment; filename=users_sheet.xls"; response.setHeader(headerKey,
-	 * headerValue);
-	 * 
-	 * List<CallInDto> list = alertsExportService.getCallInAlerts();
-	 * 
-	 * System.out.println("callInDto ===== " + list);
-	 * 
-	 * CallInExcelExporterUtil excelExporter = new CallInExcelExporterUtil(list);
-	 * 
-	 * excelExporter.export(response);
-	 * 
-	 * 
-	 * }
-	 */
+
+	@GetMapping("/callin/export/excel")
+	  public List<Object[]> exportToExcel(HttpServletResponse response) throws IOException {
+	  response.setContentType("application/octet-stream");
+	  
+	  String headerKey = "Content-Disposition"; String headerValue =
+	  "attachment; filename=users_sheet.xls"; response.setHeader(headerKey,
+	  headerValue);
+	  
+	   List<Object[]> list = alertsExportService.getVoucherCostAlerts();
+	  
+	  System.out.println("callInDto ===== " + list);
+	  
+	  return list;
+	  
+	  
+	  
+	  //CallInExcelExporterUtil excelExporter = new CallInExcelExporterUtil(list);
+	  
+	  //excelExporter.export(response);
+	  
+	  
+	  }
+	 
 }

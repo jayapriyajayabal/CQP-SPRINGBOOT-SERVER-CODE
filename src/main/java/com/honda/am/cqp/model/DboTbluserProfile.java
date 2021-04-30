@@ -1,55 +1,59 @@
 package com.honda.am.cqp.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
+
+import javax.persistence.*;
 
 
 /**
- * The persistent class for the tblUSER_PROFILE database table.
+ * The persistent class for the dbo_tbluser_profile database table.
  * 
  */
 @Entity
-@Table(name="tblUSER_PROFILE")
-/*@NamedQuery(name="TblUSER_PROFILE.findAll", query="SELECT t FROM TblUSER_PROFILE t")*/
-public class TblUSER_PROFILE implements Serializable {
+@Table(name="dbo_tbluser_profile")
+@NamedQuery(name="DboTbluserProfile.findAll", query="SELECT d FROM DboTbluserProfile d")
+public class DboTbluserProfile implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="USER_LOGIN")
+	@Column(name="user_login")
 	private String userLogin;
 
-	@Column(name="EMAIL_ID")
+	@Column(name="email_id")
 	private String emailId;
 
-	@Column(name="EXIST_IN_SECURITY")
+	@Column(name="exist_in_security")
 	private String existInSecurity;
 
-	@Column(name="FAX_NO")
+	@Column(name="fax_no")
 	private String faxNo;
 
-	@Column(name="PHONE_NO")
-	private String phoneNo;
+	@Column(name="security_received_dt")
+	private String securityReceivedDt;
 
-	@Column(name="SECURITY_RECEIVED_DT")
-	private Timestamp securityReceivedDt;
+	@Column(name="ser_last_login")
+	private Timestamp serLastLogin;
 
-	@Column(name="SUPP_NO")
+	@Column(name="supp_no")
 	private String suppNo;
 
-	@Column(name="USER_FIRST_NAME")
+	@Column(name="upp_no")
+	private String uppNo;
+
+	@Column(name="user_first_name")
 	private String userFirstName;
 
-	@Column(name="USER_LAST_LOGIN")
+	@Column(name="user_last_login")
 	private Timestamp userLastLogin;
 
-	@Column(name="USER_LAST_NAME")
+	@Column(name="user_last_name")
 	private String userLastName;
 
-	@Column(name="USER_TYPE")
+	@Column(name="user_type")
 	private String userType;
 
-	public TblUSER_PROFILE() {
+	public DboTbluserProfile() {
 	}
 
 	public String getUserLogin() {
@@ -84,20 +88,20 @@ public class TblUSER_PROFILE implements Serializable {
 		this.faxNo = faxNo;
 	}
 
-	public String getPhoneNo() {
-		return this.phoneNo;
-	}
-
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
-	}
-
-	public Timestamp getSecurityReceivedDt() {
+	public Object getSecurityReceivedDt() {
 		return this.securityReceivedDt;
 	}
 
-	public void setSecurityReceivedDt(Timestamp securityReceivedDt) {
+	public void setSecurityReceivedDt(String securityReceivedDt) {
 		this.securityReceivedDt = securityReceivedDt;
+	}
+
+	public Object getSerLastLogin() {
+		return this.serLastLogin;
+	}
+
+	public void setSerLastLogin(Timestamp serLastLogin) {
+		this.serLastLogin = serLastLogin;
 	}
 
 	public String getSuppNo() {
@@ -108,6 +112,14 @@ public class TblUSER_PROFILE implements Serializable {
 		this.suppNo = suppNo;
 	}
 
+	public String getUppNo() {
+		return this.uppNo;
+	}
+
+	public void setUppNo(String uppNo) {
+		this.uppNo = uppNo;
+	}
+
 	public String getUserFirstName() {
 		return this.userFirstName;
 	}
@@ -116,7 +128,7 @@ public class TblUSER_PROFILE implements Serializable {
 		this.userFirstName = userFirstName;
 	}
 
-	public Timestamp getUserLastLogin() {
+	public Object getUserLastLogin() {
 		return this.userLastLogin;
 	}
 

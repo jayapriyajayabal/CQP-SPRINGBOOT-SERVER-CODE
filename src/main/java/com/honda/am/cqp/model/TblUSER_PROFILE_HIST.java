@@ -6,13 +6,13 @@ import java.sql.Timestamp;
 
 
 /**
- * The persistent class for the tblUSER_PROFILE database table.
+ * The persistent class for the tblUSER_PROFILE_HIST database table.
  * 
  */
 @Entity
-@Table(name="tblUSER_PROFILE")
-/*@NamedQuery(name="TblUSER_PROFILE.findAll", query="SELECT t FROM TblUSER_PROFILE t")*/
-public class TblUSER_PROFILE implements Serializable {
+@Table(name="tblUSER_PROFILE_HIST")
+@NamedQuery(name="TblUSER_PROFILE_HIST.findAll", query="SELECT t FROM TblUSER_PROFILE_HIST t")
+public class TblUSER_PROFILE_HIST implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,9 +21,6 @@ public class TblUSER_PROFILE implements Serializable {
 
 	@Column(name="EMAIL_ID")
 	private String emailId;
-
-	@Column(name="EXIST_IN_SECURITY")
-	private String existInSecurity;
 
 	@Column(name="FAX_NO")
 	private String faxNo;
@@ -37,6 +34,12 @@ public class TblUSER_PROFILE implements Serializable {
 	@Column(name="SUPP_NO")
 	private String suppNo;
 
+	@Column(name="UPDATED_BY")
+	private String updatedBy;
+
+	@Column(name="UPDATED_DATE")
+	private Timestamp updatedDate;
+
 	@Column(name="USER_FIRST_NAME")
 	private String userFirstName;
 
@@ -49,7 +52,7 @@ public class TblUSER_PROFILE implements Serializable {
 	@Column(name="USER_TYPE")
 	private String userType;
 
-	public TblUSER_PROFILE() {
+	public TblUSER_PROFILE_HIST() {
 	}
 
 	public String getUserLogin() {
@@ -66,14 +69,6 @@ public class TblUSER_PROFILE implements Serializable {
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
-	}
-
-	public String getExistInSecurity() {
-		return this.existInSecurity;
-	}
-
-	public void setExistInSecurity(String existInSecurity) {
-		this.existInSecurity = existInSecurity;
 	}
 
 	public String getFaxNo() {
@@ -106,6 +101,22 @@ public class TblUSER_PROFILE implements Serializable {
 
 	public void setSuppNo(String suppNo) {
 		this.suppNo = suppNo;
+	}
+
+	public String getUpdatedBy() {
+		return this.updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Timestamp getUpdatedDate() {
+		return this.updatedDate;
+	}
+
+	public void setUpdatedDate(Timestamp updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 
 	public String getUserFirstName() {
