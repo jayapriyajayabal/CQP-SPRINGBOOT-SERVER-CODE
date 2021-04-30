@@ -37,7 +37,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=voucher_sheet.xlsx";
+		String headerValue = "attachment; filename=Voucher_Sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<VoucherDto> list = alertsExportService.getVoucherDetails();
@@ -55,7 +55,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xlsx";
+		String headerValue = "attachment; filename=Users_Sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<UserDto> list = alertsExportService.getUserDetails();
@@ -72,7 +72,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xlsx";
+		String headerValue = "attachment; filename=Call_In_Sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<CallInDto> list = alertsExportService.getCallInDetails();
@@ -91,12 +91,12 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xlsx";
+		String headerValue = "attachment; filename=Voucher_Cost_Sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<VoucherCostDto> list = alertsExportService.getVoucherCostAlerts();
 
-		System.out.println("VoucherDto ===== " + list);
+		System.out.println("VoucherCostDto ===== " + list);
 
 		VoucherCostExcelExporterUtil excelExporter = new VoucherCostExcelExporterUtil(list);
 
@@ -110,7 +110,7 @@ public class AlertsExportController {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=users_sheet.xlsx";
+		String headerValue = "attachment; filename=TPL_Sheet.xlsx";
 		response.setHeader(headerKey, headerValue);
 
 		List<TPLDto> list = alertsExportService.getTPLAlerts();

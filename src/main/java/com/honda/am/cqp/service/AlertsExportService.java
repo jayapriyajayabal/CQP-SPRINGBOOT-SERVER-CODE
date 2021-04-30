@@ -31,7 +31,7 @@ public class AlertsExportService {
 
 	@Autowired
 	private CallInRepository callInRepository;
-	
+
 	@Autowired
 	private TPLRepository tplRepository;
 
@@ -52,7 +52,6 @@ public class AlertsExportService {
 			userDto.setUserLastName((String) dto[3]);
 			userDto.setSuppNo((String) dto[4]);
 			userDto.setUserLastLogin((Timestamp) dto[5]);
-			// userDto.setUserLastLogin(dto[5]);
 
 			list.add(userDto);
 
@@ -102,7 +101,7 @@ public class AlertsExportService {
 	}
 
 	public List<CallInDto> getCallInDetails() {
-		
+
 		try {
 			List<Object[]> user = callInRepository.getCallInAlerts();
 
@@ -115,12 +114,12 @@ public class AlertsExportService {
 				callInDto.setSuppNo((String) dto[1]);
 				callInDto.setSuppName((String) dto[2]);
 				callInDto.setStatusName((String) dto[3]);
+				list.add(callInDto);
 			}
 			return list;
 		} finally {
 			System.err.println("I am happy");
 		}
-		
 
 	}
 
@@ -142,6 +141,8 @@ public class AlertsExportService {
 				voucherDto.setFobAmt((BigDecimal) dto[6]);
 				voucherDto.setDealerNetAmt((BigDecimal) dto[7]);
 				voucherDto.setFlatRateAmt((BigDecimal) dto[8]);
+
+				list.add(voucherDto);
 			}
 			return list;
 		} finally {
@@ -151,12 +152,12 @@ public class AlertsExportService {
 	}
 
 	public List<TPLDto> getTPLAlerts() {
-		
+
 		try {
 			List<Object[]> tpl = tplRepository.getTPAAlerts();
-			
+
 			List<TPLDto> list = new ArrayList<>();
-			
+
 			for (Object[] dto : tpl) {
 				TPLDto tplDto = new TPLDto();
 				tplDto.setStatusName((String) dto[0]);
@@ -168,11 +169,12 @@ public class AlertsExportService {
 				tplDto.setUserLastName((String) dto[0]);
 				tplDto.setUserLogin((String) dto[0]);
 				tplDto.setUserType((String) dto[0]);
+
+				list.add(tplDto);
 			}
+			return list;
 		} finally {
 			// TODO: handle finally clause
 		}
-		
-		return null;
 	}
 }

@@ -38,7 +38,6 @@ public class CallInExcelExporterUtil {
 		font.setFontHeight(16);
 		style.setFont(font);
 		style.setFillBackgroundColor(IndexedColors.LIGHT_GREEN.getIndex());
-        style.setFillPattern(FillPatternType.ALT_BARS);
 
 		createCell(row, 0, "Supplier No", style);
 		createCell(row, 1, "Supplier Namee", style);

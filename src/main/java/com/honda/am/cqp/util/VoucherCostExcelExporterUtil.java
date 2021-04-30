@@ -38,7 +38,6 @@ public class VoucherCostExcelExporterUtil {
 		font.setFontHeight(16);
 		style.setFont(font);
 		style.setFillBackgroundColor(IndexedColors.LIGHT_GREEN.getIndex());
-        style.setFillPattern(FillPatternType.ALT_BARS);
 
 		createCell(row, 0, "Supplier No", style);
 		createCell(row, 1, "Supplier Name", style);
@@ -76,15 +75,15 @@ public class VoucherCostExcelExporterUtil {
 			Row row = sheet.createRow(rowCount++);
 			int columnCount = 0;
 
-			createCell(row, columnCount++, voucher.getSuppNo(), style);
-			createCell(row, columnCount++, voucher.getSuppName(), style);
-			createCell(row, columnCount++, voucher.getShortPartNo(), style);
-			createCell(row, columnCount++, voucher.getPartNo(), style);
-			createCell(row, columnCount++, voucher.getModelNames(), style);
-			createCell(row, columnCount++, voucher.getModelYears(), style);
-			createCell(row, columnCount++, voucher.getFobAmt(), style);
-			createCell(row, columnCount++, voucher.getDealerNetAmt(), style);
-			createCell(row, columnCount++, voucher.getFlatRateAmt(), style);
+			createCell(row, columnCount++, (String)voucher.getSuppNo(), style);
+			createCell(row, columnCount++, (String)voucher.getSuppName(), style);
+			createCell(row, columnCount++, (String)voucher.getShortPartNo(), style);
+			createCell(row, columnCount++, (String)voucher.getPartNo(), style);
+			createCell(row, columnCount++, (String)voucher.getModelNames(), style);
+			createCell(row, columnCount++, (String)voucher.getModelYears(), style);
+			createCell(row, columnCount++, voucher.getFobAmt().toString(), style);
+			createCell(row, columnCount++, voucher.getDealerNetAmt().toString(), style);
+			createCell(row, columnCount++, voucher.getFlatRateAmt().toString(), style);
 		}
 	}
 
