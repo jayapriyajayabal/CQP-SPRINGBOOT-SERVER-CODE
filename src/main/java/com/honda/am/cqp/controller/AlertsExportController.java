@@ -42,12 +42,12 @@ public class AlertsExportController {
 
 		List<VoucherDto> list = alertsExportService.getVoucherDetails();
 		System.out.println("UserDto ===== " + list.toString());
-		
+
 		VoucherExcelExporterUtil excelExporter = new VoucherExcelExporterUtil(list);
 		excelExporter.export(response);
-		
+
 		return list;
-		
+
 	}
 
 	@GetMapping("/user/export/excel")
@@ -61,11 +61,13 @@ public class AlertsExportController {
 		List<UserDto> list = alertsExportService.getUserDetails();
 
 		System.out.println("UserDto ===== " + list.toString());
-
 		return list;
 
 		// return list;
 		// UserExcelExporterUtil excelExporter = new UserExcelExporterUtil(list);
+		// UserExcelExporterUtil excelExporter = new UserExcelExporterUtil(list);
+
+		// excelExporter.export(response);
 
 		// excelExporter.export(response);
 	}

@@ -1,6 +1,7 @@
 package com.honda.am.cqp.util;
  
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -13,14 +14,15 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.honda.am.cqp.dto.UserDto;
 import com.honda.am.cqp.model.TblUSER_PROFILE;
  
 public class UserExcelExporterUtil {
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<TblUSER_PROFILE> listAlerts;
+    private List<UserDto> listAlerts;
      
-    public UserExcelExporterUtil(List<TblUSER_PROFILE> userList) {
+    public UserExcelExporterUtil(List<UserDto> userList) {
         this.listAlerts = userList;
         workbook = new XSSFWorkbook();
     }
@@ -41,7 +43,9 @@ public class UserExcelExporterUtil {
         createCell(row, 1, "User Type", style);       
         createCell(row, 2, "First Name", style);    
         createCell(row, 3, "Last Name", style);
-//        createCell(row, 4, "Supplier Number", style);
+        createCell(row, 4, "Supplier Number", style);
+      //  createCell(row, 5, "User Last Login", style);
+        
          
     }
      
@@ -52,7 +56,10 @@ public class UserExcelExporterUtil {
             cell.setCellValue((Integer) value);
         } else if (value instanceof Boolean) {
             cell.setCellValue((Boolean) value);
-        }else {
+        } else if (value instanceof Timestamp) {
+            cell.setCellValue((String) value);
+        }
+        else {
             cell.setCellValue((String) value);
         }
         cell.setCellStyle(style);
@@ -65,7 +72,7 @@ public class UserExcelExporterUtil {
         XSSFFont font = workbook.createFont();
         font.setFontHeight(14);
         style.setFont(font);
-        for (TblUSER_PROFILE user : listAlerts) {
+        for (UserDto user : listAlerts) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
              
@@ -78,6 +85,7 @@ public class UserExcelExporterUtil {
             createCell(row, columnCount++, user.getUserFirstName(), style);
             createCell(row, columnCount++, user.getUserLastName(), style);
             createCell(row, columnCount++, user.getSuppNo(), style); 
+           // createCell(row, columnCount++, user.getUserLastLogin(), style); 
         }
     }
      
