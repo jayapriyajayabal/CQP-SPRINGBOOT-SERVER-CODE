@@ -41,7 +41,7 @@ public class AlertsExportController {
 		response.setHeader(headerKey, headerValue);
 
 		List<VoucherDto> list = alertsExportService.getVoucherDetails();
-		System.out.println("UserDto ===== " + list.toString());
+		System.out.println("Voucher ===== " + list.toString());
 
 		VoucherExcelExporterUtil excelExporter = new VoucherExcelExporterUtil(list);
 		excelExporter.export(response);
@@ -96,7 +96,7 @@ public class AlertsExportController {
 
 		List<VoucherCostDto> list = alertsExportService.getVoucherCostAlerts();
 
-		System.out.println("callInDto ===== " + list);
+		System.out.println("VoucherDto ===== " + list);
 
 		VoucherCostExcelExporterUtil excelExporter = new VoucherCostExcelExporterUtil(list);
 
@@ -115,7 +115,7 @@ public class AlertsExportController {
 
 		List<TPLDto> list = alertsExportService.getTPLAlerts();
 
-		System.out.println("UserDto ===== " + list);
+		System.out.println("TplIn ===== " + list);
 
 		TPLExcelExporterUtil excelExporter = new TPLExcelExporterUtil(list);
 
