@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.honda.am.cqp.dto.AlertDto;
 import com.honda.am.cqp.model.TblMESSAGE_CENTER;
 import com.honda.am.cqp.service.AlertsService;
 
@@ -34,6 +35,14 @@ public class AlertsController {
 		List<TblMESSAGE_CENTER> list = alertsService.getMessage();
 		System.out.println(list);
 		return list;
+	}
+	
+
+	
+	@GetMapping("/data")
+	public List<AlertDto> getAlerts() throws IOException, SQLException {
+		System.out.println("In controller");
+		return alertsService.getAlerts();
 	}
 
 }
