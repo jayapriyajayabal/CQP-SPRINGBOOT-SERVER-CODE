@@ -15,7 +15,7 @@ import com.honda.am.cqp.dto.UserDto;
 import com.honda.am.cqp.dto.VoucherCostDto;
 import com.honda.am.cqp.dto.VoucherDto;
 import com.honda.am.cqp.repository.CallInRepository;
-import com.honda.am.cqp.repository.TPLRepository;
+import com.honda.am.cqp.repository.TplRepository;
 import com.honda.am.cqp.repository.UserRepository;
 import com.honda.am.cqp.repository.VoucherCostRepository;
 import com.honda.am.cqp.repository.VoucherRepository;
@@ -33,7 +33,7 @@ public class AlertsExportService {
 	private CallInRepository callInRepository;
 
 	@Autowired
-	private TPLRepository tplRepository;
+	private TplRepository tplRepository;
 
 	@Autowired
 	private VoucherCostRepository vouchercostRepository;
@@ -154,21 +154,16 @@ public class AlertsExportService {
 	public List<TPLDto> getTPLAlerts() {
 
 		try {
-			List<Object[]> tpl = tplRepository.getTPAAlerts();
+			List<Object[]> tpl = tplRepository.getTPLAlerts();
 
 			List<TPLDto> list = new ArrayList<>();
 
 			for (Object[] dto : tpl) {
 				TPLDto tplDto = new TPLDto();
-				tplDto.setStatusName((String) dto[0]);
-				tplDto.setSuppName((String) dto[0]);
-				tplDto.setSuppNo((String) dto[0]);
+				tplDto.setStatusName((String) dto[3]);
+				tplDto.setSuppName((String) dto[2]);
+				tplDto.setSuppNo((String) dto[1]);
 				tplDto.setTplRefID((int) dto[0]);
-				tplDto.setUserFirstName((String) dto[0]);
-				tplDto.setUserLastLogin((Timestamp) dto[0]);
-				tplDto.setUserLastName((String) dto[0]);
-				tplDto.setUserLogin((String) dto[0]);
-				tplDto.setUserType((String) dto[0]);
 
 				list.add(tplDto);
 			}

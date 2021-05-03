@@ -6,9 +6,12 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -37,11 +40,23 @@ public class CallInExcelExporterUtil {
 		font.setBold(true);
 		font.setFontHeight(16);
 		style.setFont(font);
-		style.setFillBackgroundColor(IndexedColors.LIGHT_GREEN.getIndex());
+		style.setFillForegroundColor(IndexedColors.LIME.getIndex());
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		style.setBorderBottom(BorderStyle.MEDIUM);
+		style.setBorderLeft(BorderStyle.MEDIUM);
+		style.setBorderRight(BorderStyle.MEDIUM);
+		style.setBorderTop(BorderStyle.MEDIUM);
+		style.setWrapText(true);
+		style.setAlignment(HorizontalAlignment.CENTER);
+		
+		Font headerFont = workbook.createFont();
+        headerFont.setBold(true);
+        headerFont.setFontHeightInPoints((short) 14);
+        headerFont.setColor(IndexedColors.RED.getIndex());
 
 		createCell(row, 0, "Supplier No", style);
-		createCell(row, 1, "Supplier Namee", style);
-		createCell(row, 2, "Status", style);
+		createCell(row, 1, "Supplier Name", style);
+		createCell(row, 2, "Status   ", style);
 
 	}
 
@@ -65,6 +80,12 @@ public class CallInExcelExporterUtil {
 		XSSFFont font = workbook.createFont();
 		font.setFontHeight(12);
 		style.setFont(font);
+		style.setBorderBottom(BorderStyle.MEDIUM);
+		style.setBorderLeft(BorderStyle.MEDIUM);
+		style.setBorderRight(BorderStyle.MEDIUM);
+		style.setBorderTop(BorderStyle.MEDIUM);
+		style.setWrapText(true);
+		style.setAlignment(HorizontalAlignment.CENTER);
 		for (CallInDto callIn : listAlerts) {
 			Row row = sheet.createRow(rowCount++);
 			int columnCount = 0;

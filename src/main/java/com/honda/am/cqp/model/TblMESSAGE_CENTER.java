@@ -1,41 +1,46 @@
 package com.honda.am.cqp.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the tblMESSAGE_CENTER database table.
  * 
  */
 @Entity
-@Table(name="tblMESSAGE_CENTER")
-@NamedQuery(name="TblMESSAGE_CENTER.findAll", query="SELECT t FROM TblMESSAGE_CENTER t")
+@Table(name = "tblMESSAGE_CENTER")
+@NamedQuery(name = "TblMESSAGE_CENTER.findAll", query = "SELECT t FROM TblMESSAGE_CENTER t")
 public class TblMESSAGE_CENTER implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="MESSAGE_ID")
+	@Column(name = "MESSAGE_ID")
 	private int messageId;
 
-	@Column(name="CREATED_BY")
+	@Column(name = "CREATED_BY")
 	private String createdBy;
 
-	@Column(name="CREATED_TS")
+	@Column(name = "CREATED_TS")
 	private Timestamp createdTs;
 
-	@Column(name="EXPIRY_DATE")
+	@Column(name = "EXPIRY_DATE")
 	private Timestamp expiryDate;
 
-	@Column(name="[MESSAGE]")
+	@Column(name = "[MESSAGE]")
 	private String message;
 
-	@Column(name="SUPP_NO")
+	@Column(name = "SUPP_NO")
 	private String suppNo;
 
-	@Column(name="USER_TYPE")
-	private String userType;
+	@Column(name = "USER_TYPE")
+	private char userType;
 
 	public TblMESSAGE_CENTER() {
 	}
@@ -88,12 +93,18 @@ public class TblMESSAGE_CENTER implements Serializable {
 		this.suppNo = suppNo;
 	}
 
-	public String getUserType() {
+	public char getUserType() {
 		return this.userType;
 	}
 
-	public void setUserType(String userType) {
+	public void setUserType(char userType) {
 		this.userType = userType;
 	}
 
+	@Override
+	public String toString() {
+		return "TblMESSAGE_CENTER [messageId=" + messageId + ", createdBy=" + createdBy + ", createdTs=" + createdTs
+				+ ", expiryDate=" + expiryDate + ", message=" + message + ", suppNo=" + suppNo + ", userType="
+				+ userType + "]";
+	}
 }

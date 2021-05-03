@@ -15,7 +15,6 @@ import org.apache.log4j.DailyRollingFileAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -125,7 +124,7 @@ public class Application {
 	}
 
 	public static void main(String[] args) throws IOException, SQLException {
-		
+
 		Application application = new Application();
 		application.createLogFiles();
 		application.moveOldLogFilesToArchive();

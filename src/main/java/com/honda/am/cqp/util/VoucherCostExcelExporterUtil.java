@@ -6,9 +6,11 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -37,7 +39,14 @@ public class VoucherCostExcelExporterUtil {
 		font.setBold(true);
 		font.setFontHeight(16);
 		style.setFont(font);
-		style.setFillBackgroundColor(IndexedColors.LIGHT_GREEN.getIndex());
+		style.setFillForegroundColor(IndexedColors.LIME.getIndex());
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		style.setBorderBottom(BorderStyle.MEDIUM);
+		style.setBorderLeft(BorderStyle.MEDIUM);
+		style.setBorderRight(BorderStyle.MEDIUM);
+		style.setBorderTop(BorderStyle.MEDIUM);
+		style.setWrapText(true);
+		style.setAlignment(HorizontalAlignment.CENTER);
 
 		createCell(row, 0, "Supplier No", style);
 		createCell(row, 1, "Supplier Name", style);
@@ -71,16 +80,22 @@ public class VoucherCostExcelExporterUtil {
 		XSSFFont font = workbook.createFont();
 		font.setFontHeight(12);
 		style.setFont(font);
+		style.setBorderBottom(BorderStyle.MEDIUM);
+		style.setBorderLeft(BorderStyle.MEDIUM);
+		style.setBorderRight(BorderStyle.MEDIUM);
+		style.setBorderTop(BorderStyle.MEDIUM);
+		style.setWrapText(true);
+		style.setAlignment(HorizontalAlignment.CENTER);
 		for (VoucherCostDto voucher : listAlerts) {
 			Row row = sheet.createRow(rowCount++);
 			int columnCount = 0;
 
-			createCell(row, columnCount++, (String)voucher.getSuppNo(), style);
-			createCell(row, columnCount++, (String)voucher.getSuppName(), style);
-			createCell(row, columnCount++, (String)voucher.getShortPartNo(), style);
-			createCell(row, columnCount++, (String)voucher.getPartNo(), style);
-			createCell(row, columnCount++, (String)voucher.getModelNames(), style);
-			createCell(row, columnCount++, (String)voucher.getModelYears(), style);
+			createCell(row, columnCount++, (String) voucher.getSuppNo(), style);
+			createCell(row, columnCount++, (String) voucher.getSuppName(), style);
+			createCell(row, columnCount++, (String) voucher.getShortPartNo(), style);
+			createCell(row, columnCount++, (String) voucher.getPartNo(), style);
+			createCell(row, columnCount++, (String) voucher.getModelNames(), style);
+			createCell(row, columnCount++, (String) voucher.getModelYears(), style);
 			createCell(row, columnCount++, voucher.getFobAmt().toString(), style);
 			createCell(row, columnCount++, voucher.getDealerNetAmt().toString(), style);
 			createCell(row, columnCount++, voucher.getFlatRateAmt().toString(), style);
