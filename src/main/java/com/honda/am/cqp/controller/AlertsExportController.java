@@ -26,14 +26,14 @@ import com.honda.am.cqp.util.VoucherExcelExporterUtil;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/alerts")
+@RequestMapping("/api/alerts/export/excel/")
 public class AlertsExportController {
 
 	@Autowired
 	private AlertsExportService alertsExportService;
 
-	@GetMapping("/voucher/export/excel")
-	public List<VoucherDto> exportVoucherToExcel(HttpServletResponse response) throws IOException {
+	@GetMapping("Voucher")
+	public void exportVoucherToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
@@ -45,13 +45,10 @@ public class AlertsExportController {
 
 		VoucherExcelExporterUtil excelExporter = new VoucherExcelExporterUtil(list);
 		excelExporter.export(response);
-
-		return list;
-
 	}
 
-	@GetMapping("/user/export/excel")
-	public List<UserDto> exportUserToExcel(HttpServletResponse response) throws IOException {
+	@GetMapping("User")
+	public void exportUserToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
@@ -64,11 +61,10 @@ public class AlertsExportController {
 
 		UserExcelExporterUtil excelExporter = new UserExcelExporterUtil(list);
 		excelExporter.export(response);
-		return list;
 	}
 
-	@GetMapping("/callin/export/excel")
-	public List<CallInDto> exportToExcel(HttpServletResponse response) throws IOException {
+	@GetMapping("CallIn")
+	public void exportToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
@@ -82,12 +78,10 @@ public class AlertsExportController {
 		CallInExcelExporterUtil excelExporter = new CallInExcelExporterUtil(list);
 
 		excelExporter.export(response);
-
-		return list;
 	}
 
-	@GetMapping("/vouchercost/export/excel")
-	public List<VoucherCostDto> exportVoucherCostToExcel(HttpServletResponse response) throws IOException {
+	@GetMapping("VoucherCost")
+	public void exportVoucherCostToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
 		String headerKey = "Content-Disposition";
@@ -101,11 +95,9 @@ public class AlertsExportController {
 		VoucherCostExcelExporterUtil excelExporter = new VoucherCostExcelExporterUtil(list);
 
 		excelExporter.export(response);
-
-		return list;
 	}
 
-	@GetMapping("/tpl/export/excel")
+	@GetMapping("TPL")
 	public void exportTplToExcel(HttpServletResponse response) throws IOException {
 		response.setContentType("application/octet-stream");
 
