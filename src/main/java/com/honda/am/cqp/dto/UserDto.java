@@ -3,8 +3,6 @@
  */
 package com.honda.am.cqp.dto;
 
-import java.sql.Timestamp;
-
 /**
  * @author Shrirang Kadale
  *
@@ -15,7 +13,7 @@ public class UserDto {
 	private String userType;
 	private String userFirstName;
 	private String userLastName;
-	private Timestamp userLastLogin;
+	private String userLastLogin;
 	private String suppNo;
 
 	public String getUserLogin() {
@@ -50,11 +48,11 @@ public class UserDto {
 		this.userLastName = userLastName;
 	}
 
-	public Timestamp getUserLastLogin() {
+	public String getUserLastLogin() {
 		return userLastLogin;
 	}
 
-	public void setUserLastLogin(Timestamp userLastLogin) {
+	public void setUserLastLogin(String userLastLogin) {
 		this.userLastLogin = userLastLogin;
 	}
 

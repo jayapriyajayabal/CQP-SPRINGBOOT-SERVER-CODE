@@ -51,7 +51,7 @@ public class AlertsExportService {
 			userDto.setUserFirstName((String) dto[2]);
 			userDto.setUserLastName((String) dto[3]);
 			userDto.setSuppNo((String) dto[4]);
-			userDto.setUserLastLogin((Timestamp) dto[5]);
+			userDto.setUserLastLogin((String) dto[5]);
 
 			list.add(userDto);
 
