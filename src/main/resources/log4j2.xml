@@ -23,26 +23,5 @@
 	       
 </appender>
 
-<!-- <logger name="net.guides.springboot2" additivity="false">
-	<level value="DEBUG" />
-	<appender-ref ref="RollingAppender" />
-	<appender-ref ref="console" />
-</logger> -->
-
- <root>
-        <level value="DEBUG" />
-        <appender-ref ref="console" />
-        <appender-ref ref="file" />
-    </root>
-    
-   
-<!-- <root>
-    <priority value="DEBUG"/>
-     <appender-ref ref="console" />
-    <appender-ref ref="RollingAppender" />
-</root> -->
-     
-     
-
 
 </log4j:configuration> 
