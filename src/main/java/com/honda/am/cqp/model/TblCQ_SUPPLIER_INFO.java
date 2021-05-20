@@ -50,6 +50,17 @@ public class TblCQ_SUPPLIER_INFO implements Serializable {
 
 	@Column(name="SUPP_STATUS")
 	private String suppStatus;
+	
+	@Transient
+	private String suppNameNo;
+
+	public String getSuppNameNo() {
+		return suppNameNo;
+	}
+
+	public void setSuppNameNo(String suppNameNo) {
+		this.suppNameNo = suppNameNo;
+	}
 
 	public TblCQ_SUPPLIER_INFO() {
 	}
