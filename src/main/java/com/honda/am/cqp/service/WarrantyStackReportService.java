@@ -1,47 +1,16 @@
 
 package com.honda.am.cqp.service;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
-import java.util.LinkedHashSet;
-import org.assertj.core.util.Maps;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import com.honda.am.cqp.dto.CallInDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.honda.am.cqp.dto.SupplierInfoDto;
-import com.honda.am.cqp.dto.TPLDto;
-import com.honda.am.cqp.dto.UserDto;
-import com.honda.am.cqp.dto.VoucherCostDto;
-import com.honda.am.cqp.dto.VoucherDto;
 import com.honda.am.cqp.dto.WarrantyReportsDto;
-import com.honda.am.cqp.dto.WarrantyReportsDto2;
-import com.honda.am.cqp.exception.ResourceNotFoundException;
-import com.honda.am.cqp.model.TblCQ_SUPPLIER_INFO;
-import com.honda.am.cqp.model.TblOVERALL_REPL_SUMMARY;
-import com.honda.am.cqp.repository.CallInRepository;
-import com.honda.am.cqp.repository.TplRepository;
-import com.honda.am.cqp.repository.UserRepository;
-import com.honda.am.cqp.repository.VoucherCostRepository;
-import com.honda.am.cqp.repository.VoucherRepository;
 import com.honda.am.cqp.repository.WarrantyStackReportRepository;
 
 @Service
@@ -49,7 +18,7 @@ public class WarrantyStackReportService {
 
 	@Autowired
 	private WarrantyStackReportRepository warantyStackReportRepository;
-	private Object value;
+	
 
 	/*
 	 * public List<TblCQ_SUPPLIER_INFO> getAllValues() { //return
@@ -74,8 +43,8 @@ public class WarrantyStackReportService {
 		return supplierInfoDtoList;
 	}
 
-	public List<WarrantyReportsDto> getvaluesBySuppNo() throws Exception {
-		List<Object[]> tblOverallReplSummary = warantyStackReportRepository.getReportValuesBySupplier();
+	public List<WarrantyReportsDto> getvaluesBySuppNo(String supplierNo) throws Exception {
+		List<Object[]> tblOverallReplSummary = warantyStackReportRepository.getReportValuesBySupplier(supplierNo);
 		ArrayList<WarrantyReportsDto> warrantyInfoDtoList = new ArrayList<WarrantyReportsDto>();
 		List<WarrantyReportsDto> newWarrantyList = new ArrayList<WarrantyReportsDto>();
 		List<Integer> dataodsy1 = new ArrayList<Integer>();

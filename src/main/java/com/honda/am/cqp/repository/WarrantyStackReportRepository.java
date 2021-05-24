@@ -3,16 +3,10 @@ package com.honda.am.cqp.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
-import javax.persistence.StoredProcedureQuery;
-import org.springframework.stereotype.Repository;
+import javax.persistence.Query;
 
-import com.honda.am.cqp.model.TblCQ_SUPPLIER_INFO;
-import com.honda.am.cqp.model.TblOVERALL_REPL_SUMMARY;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class WarrantyStackReportRepository {
@@ -24,9 +18,9 @@ public class WarrantyStackReportRepository {
 		return null;
 	}
 
-	public List<Object[]> getReportValuesBySupplier() {
-		@SuppressWarnings("unchecked")
-		List<Object[]> q = em
+	@SuppressWarnings("unchecked")
+	public List<Object[]> getReportValuesBySupplier(String supplierNo) {
+		Query query = em
 				.createNativeQuery(" SELECT DISTINCT BT.RowID, BT.PART, BT.SHORT_PART_NAME, BT.FACTORY, BT.MOD_NAME, "
 						+ "  SUM(BT.Replaced)  AS Rpl_Qty, MAX(NQTY) AS Score, LTRIM(RTRIM(BT.FACTORY)) + space(1) + LTRIM(RTRIM(BT.MOD_NAME))  as Model_factory "
 						+ "  FROM (SELECT CASE WHEN fea.veh_destn_code IN ('KA', 'KL') "
@@ -43,13 +37,13 @@ public class WarrantyStackReportRepository {
 						+ "  between Year(GETDATE())-05 and  Year(GETDATE())   AND veh_destn_code IN ( 'KA', 'KL', 'KC' )  AND fea1.MOD_NAME IS NOT NULL  "
 						+ "  AND fea1.MOD_NAME <> ''    AND fea1.FACTORY IS NOT NULL  AND fea1.FACTORY <> ''    ) "
 						+ "  AS VT  WHERE VT.SHORT_PART_NO = BS.SHORT_PART_NO  AND VT.SUPP_NO = BS.SUPP_NO  GROUP BY DSTN	  ORDER BY SUM(RPLSCORE) DESC  ),0) AS ODRBY "
-						+ "  FROM tbloverall_repl_summary AS BS  WHERE SUPP_NO = 011620) AS BT  ) AS BS  LEFT JOIN tblOVERALL_REPL_SUMMARY AS "
+						+ "  FROM tbloverall_repl_summary AS BS  WHERE SUPP_NO = :supplierNo) AS BT  ) AS BS  LEFT JOIN tblOVERALL_REPL_SUMMARY AS "
 						+ "  RPLS ON BS.SUPP_NO = RPLS.SUPP_NO  AND BS.SHORT_PART_NO = RPLS.SHORT_PART_NO  LEFT JOIN tblwrfea1_cq fea ON RPLS.mtc_sk = fea.mtc_sk  WHERE "
 						+ "  CAST( fea.MOD_YEAR AS INT ) between Year( GETDATE())-05 and Year( GETDATE()) AND fea.veh_destn_code IN ('KA','KC','KL') )AS BT GROUP BY BT.RowID, BT.PART, BT.SHORT_PART_NAME, BT.FACTORY, "
-						+ "  BT.MOD_NAME  ORDER BY RowID, PART ")
-				.getResultList();
+						+ "  BT.MOD_NAME  ORDER BY RowID, PART ");
+						query.setParameter("supplierNo", supplierNo);
 
-		return q;
+		return query.getResultList();
 	}
 
 }
