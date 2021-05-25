@@ -47,58 +47,109 @@ public class WarrantyStackReportService {
 		List<Object[]> tblOverallReplSummary = warantyStackReportRepository.getReportValuesBySupplier(supplierNo);
 		ArrayList<WarrantyReportsDto> warrantyInfoDtoList = new ArrayList<WarrantyReportsDto>();
 		List<WarrantyReportsDto> newWarrantyList = new ArrayList<WarrantyReportsDto>();
-		List<Integer> dataodsy1 = new ArrayList<Integer>();
-		List<Integer> hmapssport1 = new ArrayList<Integer>();
-		List<Integer> dataodsy2 = new ArrayList<Integer>();
-		List<Integer> hmapssport2 = new ArrayList<Integer>();
+		
+		List<Integer> dataListKA1 = new ArrayList<Integer>();
+		List<Integer> dataListKC1 = new ArrayList<Integer>();
+		List<Integer> dataListKA2 = new ArrayList<Integer>();
+		List<Integer> dataListKC2 = new ArrayList<Integer>();
+		List<Integer> dataListKA3 = new ArrayList<Integer>();
+		List<Integer> dataListKC3 = new ArrayList<Integer>();
+		
+		
 
 		WarrantyReportsDto warrantyReportsDTO = new WarrantyReportsDto();
 
 		for (Object[] dto : tblOverallReplSummary) {
 			String[] ShortPartNo = ((String) dto[1]).split("_", 0);
+			System.out.println((String) dto[7]);
 			if (dto[7].equals("HMA ODYSSEY")) {
 
 				if (ShortPartNo[1].equals("KA")) {
+					
 					warrantyReportsDTO = new WarrantyReportsDto();
-					dataodsy1.add((Integer) dto[5]);
+					dataListKA1.add((Integer) dto[5]);
 					warrantyReportsDTO.setPart("KA");
 					warrantyReportsDTO.setCheck("ody_kA");
-					warrantyReportsDTO.setData(dataodsy1);
+					warrantyReportsDTO.setPart("KA");
+					warrantyReportsDTO.setData(dataListKA1);
 					warrantyReportsDTO.setModelfactory((String) dto[7]);
 					warrantyInfoDtoList.add(warrantyReportsDTO);
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
 				} else {
-
+					
 					warrantyReportsDTO = new WarrantyReportsDto();
-					dataodsy2.add((Integer) dto[5]);
+					dataListKC1.add((Integer) dto[5]);
 					warrantyReportsDTO.setCheck("ody_kC");
 					warrantyReportsDTO.setPart("KC");
-					warrantyReportsDTO.setData(dataodsy2);
+					warrantyReportsDTO.setData(dataListKC1);
 					warrantyReportsDTO.setModelfactory((String) dto[7]);
 					warrantyInfoDtoList.add(warrantyReportsDTO);
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
 				}
 			} else if (dto[7].equals("HMA PASSPORT")) {
 				if (ShortPartNo[1].equals("KA")) {
+					
 					warrantyReportsDTO = new WarrantyReportsDto();
-					hmapssport1.add((Integer) dto[5]);
+					dataListKA2.add((Integer) dto[5]);
 					warrantyReportsDTO.setCheck("pass_kA");
-					warrantyReportsDTO.setData(hmapssport1);
+					warrantyReportsDTO.setData(dataListKA2);
+					warrantyReportsDTO.setPart("KA");
 					warrantyReportsDTO.setModelfactory((String) dto[7]);
 					warrantyInfoDtoList.add(warrantyReportsDTO);
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
 				} else {
 					warrantyReportsDTO = new WarrantyReportsDto();
-					hmapssport2.add((Integer) dto[5]);
+					dataListKC2.add((Integer) dto[5]);
 					warrantyReportsDTO.setPart("KC");
 					warrantyReportsDTO.setCheck("pass_kC");
-					warrantyReportsDTO.setData(hmapssport2);
+					warrantyReportsDTO.setData(dataListKC2);
 					warrantyReportsDTO.setModelfactory((String) dto[7]);
 					warrantyInfoDtoList.add(warrantyReportsDTO);
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
 				}
 
-			}
+			}  else if (dto[7].equals("MAP TLX")) {
+				if (ShortPartNo[1].equals("KA")) {
+					warrantyReportsDTO = new WarrantyReportsDto();
+					dataListKA3.add((Integer) dto[5]);
+					warrantyReportsDTO.setCheck("map_kA");
+					warrantyReportsDTO.setData(dataListKA3);
+					warrantyReportsDTO.setPart("KA");
+					warrantyReportsDTO.setModelfactory((String) dto[7]);
+					warrantyInfoDtoList.add(warrantyReportsDTO);
+					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
+				} else {
+					warrantyReportsDTO = new WarrantyReportsDto();
+					dataListKC3.add((Integer) dto[5]);
+					warrantyReportsDTO.setPart("KC");
+					warrantyReportsDTO.setCheck("map_kC");
+					warrantyReportsDTO.setData(dataListKC3);
+					warrantyReportsDTO.setModelfactory((String) dto[7]);
+					warrantyInfoDtoList.add(warrantyReportsDTO);
+					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
+				} 
+
+			}   else if (dto[7].equals("ELP MDX")) {
+				if (ShortPartNo[1].equals("KA")) {
+					warrantyReportsDTO = new WarrantyReportsDto();
+					dataListKA3.add((Integer) dto[5]);
+					warrantyReportsDTO.setCheck("elp_kA");
+					warrantyReportsDTO.setData(dataListKA3);
+					warrantyReportsDTO.setPart("KA");
+					warrantyReportsDTO.setModelfactory((String) dto[7]);
+					warrantyInfoDtoList.add(warrantyReportsDTO);
+					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
+				} else {
+					warrantyReportsDTO = new WarrantyReportsDto();
+					dataListKC3.add((Integer) dto[5]);
+					warrantyReportsDTO.setPart("KC");
+					warrantyReportsDTO.setCheck("elp_kC");
+					warrantyReportsDTO.setData(dataListKC3);
+					warrantyReportsDTO.setModelfactory((String) dto[7]);
+					warrantyInfoDtoList.add(warrantyReportsDTO);
+					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
+				}
+		}
 		}
 		return newWarrantyList;
 
