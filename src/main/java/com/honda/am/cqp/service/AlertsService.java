@@ -24,7 +24,7 @@ public class AlertsService {
 
 	@Autowired
 	private MessageCenterRepository messageRepository;
-	
+
 	@Autowired
 	AlertRepository alertRepository;
 
@@ -51,18 +51,16 @@ public class AlertsService {
 			// TODO: handle finally clause
 		}
 	}
-	
-	
-	
+
 	public List<AlertDto> getAlerts() {
-		List<Object[]> alerts= alertRepository.getAlerts();
+		List<Object[]> alerts = alertRepository.getAlerts();
 		List<AlertDto> list = new ArrayList<>();
-		for (Object[] dto :alerts) {
-            AlertDto alertDto=new AlertDto();
-            alertDto.setItemType((String) dto[0]);
-            alertDto.setSuppNo((String) dto[1]);
-            alertDto.setStatus((String) dto[2]);
-            alertDto.setItemText((String) dto[3]);
+		for (Object[] dto : alerts) {
+			AlertDto alertDto = new AlertDto();
+			alertDto.setItemType((String) dto[0]);
+			alertDto.setSuppNo((String) dto[1]);
+			alertDto.setStatus((String) dto[2]);
+			alertDto.setItemText((String) dto[3]);
 			list.add(alertDto);
 		}
 		return list;

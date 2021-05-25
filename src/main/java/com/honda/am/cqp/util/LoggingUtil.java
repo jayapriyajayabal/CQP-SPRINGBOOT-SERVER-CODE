@@ -18,8 +18,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import com.honda.am.cqp.Application;
 
-
-
 @EnableJpaAuditing
 public class LoggingUtil {
 

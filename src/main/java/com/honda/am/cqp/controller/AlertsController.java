@@ -22,23 +22,13 @@ public class AlertsController {
 	@Autowired
 	private AlertsService alertsService;
 
-	/*
-	 * @GetMapping("/users") public Map getUserAlerts(HttpServletResponse response)
-	 * throws IOException, SQLException { Map map =
-	 * alertsService.getUserAlertsCount();
-	 * System.out.println(map.get("USER").toString()); return
-	 * alertsService.getUserAlertsCount(); }
-	 */
-
 	@GetMapping("/inbox")
 	public List<TblMESSAGE_CENTER> getMessage() throws IOException, SQLException {
 		List<TblMESSAGE_CENTER> list = alertsService.getMessage();
 		System.out.println(list);
 		return list;
 	}
-	
 
-	
 	@GetMapping("/data")
 	public List<AlertDto> getAlerts() throws IOException, SQLException {
 		System.out.println("In controller");

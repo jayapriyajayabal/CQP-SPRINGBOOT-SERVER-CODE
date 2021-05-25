@@ -47,7 +47,7 @@ public class VoucherExcelExporterUtil {
 		style.setBorderTop(BorderStyle.MEDIUM);
 		style.setWrapText(true);
 		style.setAlignment(HorizontalAlignment.CENTER);
-		
+
 		createCell(row, 0, "Supplier No", style);
 		createCell(row, 1, "Supplier Name", style);
 		createCell(row, 2, "Status   ", style);

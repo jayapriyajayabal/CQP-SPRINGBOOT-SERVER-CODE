@@ -6,7 +6,7 @@ public class CallInDto {
 	private String suppNo;
 	private String suppName;
 	private String statusName;
-	
+
 	public CallInDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -48,6 +48,5 @@ public class CallInDto {
 		return "CallInDto [callinPartSk=" + callinPartSk + ", suppNo=" + suppNo + ", suppName=" + suppName
 				+ ", statusName=" + statusName + "]";
 	}
-	
-	
+
 }

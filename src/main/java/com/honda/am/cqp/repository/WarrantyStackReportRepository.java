@@ -41,7 +41,7 @@ public class WarrantyStackReportRepository {
 						+ "  RPLS ON BS.SUPP_NO = RPLS.SUPP_NO  AND BS.SHORT_PART_NO = RPLS.SHORT_PART_NO  LEFT JOIN tblwrfea1_cq fea ON RPLS.mtc_sk = fea.mtc_sk  WHERE "
 						+ "  CAST( fea.MOD_YEAR AS INT ) between Year( GETDATE())-05 and Year( GETDATE()) AND fea.veh_destn_code IN ('KA','KC','KL') )AS BT GROUP BY BT.RowID, BT.PART, BT.SHORT_PART_NAME, BT.FACTORY, "
 						+ "  BT.MOD_NAME  ORDER BY RowID, PART ");
-						query.setParameter("supplierNo", supplierNo);
+		query.setParameter("supplierNo", supplierNo);
 
 		return query.getResultList();
 	}

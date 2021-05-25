@@ -18,7 +18,6 @@ public class WarrantyStackReportService {
 
 	@Autowired
 	private WarrantyStackReportRepository warantyStackReportRepository;
-	
 
 	/*
 	 * public List<TblCQ_SUPPLIER_INFO> getAllValues() { //return
@@ -47,15 +46,13 @@ public class WarrantyStackReportService {
 		List<Object[]> tblOverallReplSummary = warantyStackReportRepository.getReportValuesBySupplier(supplierNo);
 		ArrayList<WarrantyReportsDto> warrantyInfoDtoList = new ArrayList<WarrantyReportsDto>();
 		List<WarrantyReportsDto> newWarrantyList = new ArrayList<WarrantyReportsDto>();
-		
+
 		List<Integer> dataListKA1 = new ArrayList<Integer>();
 		List<Integer> dataListKC1 = new ArrayList<Integer>();
 		List<Integer> dataListKA2 = new ArrayList<Integer>();
 		List<Integer> dataListKC2 = new ArrayList<Integer>();
 		List<Integer> dataListKA3 = new ArrayList<Integer>();
 		List<Integer> dataListKC3 = new ArrayList<Integer>();
-		
-		
 
 		WarrantyReportsDto warrantyReportsDTO = new WarrantyReportsDto();
 
@@ -65,7 +62,7 @@ public class WarrantyStackReportService {
 			if (dto[7].equals("HMA ODYSSEY")) {
 
 				if (ShortPartNo[1].equals("KA")) {
-					
+
 					warrantyReportsDTO = new WarrantyReportsDto();
 					dataListKA1.add((Integer) dto[5]);
 					warrantyReportsDTO.setPart("KA");
@@ -76,7 +73,7 @@ public class WarrantyStackReportService {
 					warrantyInfoDtoList.add(warrantyReportsDTO);
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
 				} else {
-					
+
 					warrantyReportsDTO = new WarrantyReportsDto();
 					dataListKC1.add((Integer) dto[5]);
 					warrantyReportsDTO.setCheck("ody_kC");
@@ -88,7 +85,7 @@ public class WarrantyStackReportService {
 				}
 			} else if (dto[7].equals("HMA PASSPORT")) {
 				if (ShortPartNo[1].equals("KA")) {
-					
+
 					warrantyReportsDTO = new WarrantyReportsDto();
 					dataListKA2.add((Integer) dto[5]);
 					warrantyReportsDTO.setCheck("pass_kA");
@@ -108,7 +105,7 @@ public class WarrantyStackReportService {
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
 				}
 
-			}  else if (dto[7].equals("MAP TLX")) {
+			} else if (dto[7].equals("MAP TLX")) {
 				if (ShortPartNo[1].equals("KA")) {
 					warrantyReportsDTO = new WarrantyReportsDto();
 					dataListKA3.add((Integer) dto[5]);
@@ -127,9 +124,9 @@ public class WarrantyStackReportService {
 					warrantyReportsDTO.setModelfactory((String) dto[7]);
 					warrantyInfoDtoList.add(warrantyReportsDTO);
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
-				} 
+				}
 
-			}   else if (dto[7].equals("ELP MDX")) {
+			} else if (dto[7].equals("ELP MDX")) {
 				if (ShortPartNo[1].equals("KA")) {
 					warrantyReportsDTO = new WarrantyReportsDto();
 					dataListKA3.add((Integer) dto[5]);
@@ -149,7 +146,7 @@ public class WarrantyStackReportService {
 					warrantyInfoDtoList.add(warrantyReportsDTO);
 					newWarrantyList = removeDuplicates(warrantyInfoDtoList);
 				}
-		}
+			}
 		}
 		return newWarrantyList;
 

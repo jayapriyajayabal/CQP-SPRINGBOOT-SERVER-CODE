@@ -48,11 +48,11 @@ public class CallInExcelExporterUtil {
 		style.setBorderTop(BorderStyle.MEDIUM);
 		style.setWrapText(true);
 		style.setAlignment(HorizontalAlignment.CENTER);
-		
+
 		Font headerFont = workbook.createFont();
-        headerFont.setBold(true);
-        headerFont.setFontHeightInPoints((short) 14);
-        headerFont.setColor(IndexedColors.RED.getIndex());
+		headerFont.setBold(true);
+		headerFont.setFontHeightInPoints((short) 14);
+		headerFont.setColor(IndexedColors.RED.getIndex());
 
 		createCell(row, 0, "Supplier No", style);
 		createCell(row, 1, "Supplier Name", style);

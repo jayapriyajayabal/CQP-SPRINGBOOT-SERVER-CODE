@@ -22,10 +22,9 @@ public class WarrantyStackReportController {
 	@Autowired
 	private WarrantyStackReportService warrantyStackReportService;
 
-	
 	@GetMapping("/allSupplierNameNo")
 	public List<SupplierInfoDto> getSupplierNoName() {
-		
+
 		return warrantyStackReportService.getSupplierNoName();
 	}
 
@@ -42,12 +41,13 @@ public class WarrantyStackReportController {
 		return tblOverallReplSummary;
 	}
 
-	
-	/*@GetMapping("/valuesBySupplier/{id}")
-	public ResponseEntity<TblCQ_SUPPLIER_INFO> getvaluesBySuppNo(@PathVariable(value = "suppNo") Long suppNo)
-			throws ResourceNotFoundException {
-		ResponseEntity<TblCQ_SUPPLIER_INFO> tblOverallReplSummary = warrantyStackReportService.getvaluesBySuppNo(suppNo);
-		return tblOverallReplSummary;
-	}*/
+	/*
+	 * @GetMapping("/valuesBySupplier/{id}") public
+	 * ResponseEntity<TblCQ_SUPPLIER_INFO> getvaluesBySuppNo(@PathVariable(value =
+	 * "suppNo") Long suppNo) throws ResourceNotFoundException {
+	 * ResponseEntity<TblCQ_SUPPLIER_INFO> tblOverallReplSummary =
+	 * warrantyStackReportService.getvaluesBySuppNo(suppNo); return
+	 * tblOverallReplSummary; }
+	 */
 
 }
